@@ -1,0 +1,12 @@
+/.vs
+/x64
+
+//PlentyOfPaws/bin
+/PlentyOfPaws/PlentyOfPaws/obj
+
+/PlentyOfPaws/PlentyOfPaws.Android/bin
+/PlentyOfPaws/PlentyOfPaws.Android/obj
+/PlentyOfPaws/PlentyOfPaws.Android/PlentyOfPaws.Android.csproj.user
+
+/PlentyOfPaws/PlentyOfPaws.iOS/bin
+/PlentyOfPaws/PlentyOfPaws.iOS/obj

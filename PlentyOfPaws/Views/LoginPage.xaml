@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Login"
+    BackgroundColor="LightCoral"
+    BackgroundImageSource="LoginBG.png"
+    
+    Shell.NavBarIsVisible="False"
+    x:Class="PlentyOfPaws.Views.LoginPage">
+
+    <ContentPage.Content>
+
+        <StackLayout Margin="50,15" VerticalOptions="Center" Spacing="12">
+            <!-- 1. clear button -->
+            <Entry 
+                x:Name="UsernameTxt"
+                Placeholder="Email" PlaceholderColor="#f1f1f1"        
+            />
+
+            <Entry Placeholder="Password" IsPassword="True" PlaceholderColor="#f1f1f1"/>
+
+            <Button Text="Login" HeightRequest="43"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    CornerRadius="15"
+                    />
+
+
+            <Button Text="Register"
+                    Clicked="Register_btn_Clicked"
+                    BackgroundColor="White"
+                    TextColor="black" 
+                    Scale="1"
+                    CornerRadius="15"/>
+
+            <!-- 2. Register 
+            <Label Text="Register"
+                   Scale="1.4"
+                   x:Name="RegistrationBtn"
+                   TextColor="White"
+                   Margin="20"
+                   HorizontalTextAlignment="Center"
+                   TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label> -->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

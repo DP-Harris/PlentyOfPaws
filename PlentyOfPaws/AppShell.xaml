@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       FlyoutBehavior="Disabled"
+       xmlns:local="clr-namespace:PlentyOfPaws.Views"
+       xmlns:fontawesome="clr-namespace:FontAwesome"
+       xmlns:app="clr-namespace:PlentyOfPaws" xmlns:vm="clr-namespace:PlentyOfPaws.ViewModels"
+       Title="PlentyOfPaws"
+       x:Class="PlentyOfPaws.AppShell"
+       BackgroundColor="{DynamicResource WindowBackgroundColor}">
+
+    <!--  Sets the whole background color for the task bar by TabBarBackground color found in App.XAML-->
+    <Shell.Resources>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource TabBarBackgroundColor}" />
+        </Style> 
+    </Shell.Resources>
+
+    <Shell.BindingContext>
+        <vm:AppViewModel/>
+    </Shell.BindingContext>
+
+    <!-- Lets the route of the login button -->
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
+    </ShellItem>
+
+    <!-- Sets route to main taking users to the home/card view page-->
+    <TabBar Route="main">
+        <!-- sets home tab name and lets the icon of a house -->
+        <Tab Title="Home">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                                 Glyph="{StaticResource HouseIcon}">
+                </FontImageSource>
+            </Tab.Icon>
+            <ShellContent         
+                ContentTemplate="{DataTemplate local:MainCardView}" />
+        </Tab>
+
+        <!-- sets tab name to chat and lets a message icon in the tab bar-->
+        <Tab Title="Chat">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                                 Glyph="{StaticResource MessageIcon}">
+                </FontImageSource>
+            </Tab.Icon>
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:ChatPageView}" />
+        </Tab>
+
+        <!-- sets the tab name to profile and sets that tab bar section to an image of a profile -->
+        <Tab Title="Profile">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                                 Glyph="{StaticResource ProfileIcon}">
+                </FontImageSource>
+            </Tab.Icon>
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:ProfilePageView}" />
+        </Tab>
+    </TabBar>
+
+
+
+</Shell>
+
