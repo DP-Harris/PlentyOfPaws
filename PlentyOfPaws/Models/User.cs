@@ -11,6 +11,9 @@ namespace PlentyOfPaws.Models
         public string UserEmail { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
+        public string UserLocation { get; set; }
+        
+        
 
         public void AddtoList(User user)
         {

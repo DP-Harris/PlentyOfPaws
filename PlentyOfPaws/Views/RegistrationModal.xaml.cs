@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PlentyOfPaws.Models;
+
 
 namespace PlentyOfPaws.Views
 {
@@ -14,6 +10,7 @@ namespace PlentyOfPaws.Views
     public partial class RegistrationModal : ContentPage
     {
         User NewUser = new User();
+        Location Location = new Location();
         string FirstPass;
         string SecoundPass;
 
@@ -32,6 +29,7 @@ namespace PlentyOfPaws.Views
             await Shell.Current.GoToAsync("//login");
             AssignPass();
             Console.WriteLine("Registration successful");
+            NewUser.UserLocation = Location.GetCurrentLocation().ToString();
             NewUser.AddtoList(NewUser);
             NewUser.PrintUserInfo(NewUser);
         }

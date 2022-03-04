@@ -18,3 +18,7 @@ E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\ref\PlentyOfPaws.dll
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\PlentyOfPaws.pdb
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\Views\ChatPageView.xaml.g.cs
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\Views\ProfilePageView.xaml.g.cs
+E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\Mono.Android.dll
+E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\Mono.Android.pdb
+E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\Mono.Android.xml
+E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\PlentyOfPaws.csproj.CopyComplete
