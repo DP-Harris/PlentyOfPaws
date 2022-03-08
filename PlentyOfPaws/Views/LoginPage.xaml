@@ -3,50 +3,85 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Login"
-    BackgroundColor="LightCoral"
-    BackgroundImageSource="LoginBG.png"
-    
     Shell.NavBarIsVisible="False"
     x:Class="PlentyOfPaws.Views.LoginPage">
 
+
     <ContentPage.Content>
+        
+        <Grid>
+            <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
+                <BoxView.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="White" Offset="0.3"/>
+                        <GradientStop Color="CornflowerBlue" Offset="0.5" />
+                        <GradientStop Color="Beige" Offset="0.7" />
+                        <GradientStop Color="DarkBlue" Offset="1.0" />
 
-        <StackLayout Margin="50,15" VerticalOptions="Center" Spacing="12">
-            <!-- 1. clear button -->
-            <Entry 
-                x:Name="UsernameTxt"
-                Placeholder="Email" PlaceholderColor="#f1f1f1"        
-            />
 
-            <Entry Placeholder="Password" IsPassword="True" PlaceholderColor="#f1f1f1"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+                
+             
+            
+                
+            </BoxView>
 
-            <Button Text="Login" HeightRequest="43"
+          
+            <StackLayout Margin="50,15" VerticalOptions="Center" Spacing="12">
+
+                <Entry  x:Name="UsernameTxt" 
+                        Placeholder="Email" 
+                        TextColor="White"
+                        PlaceholderColor="#f1f1f1"        
+                />
+
+                <Entry x:Name="pwd"
+                       Placeholder="Password"  
+                       IsPassword="True" 
+                       PlaceholderColor="#f1f1f1"
+                       TextColor="White"
+                       
+                />
+
+                <Button Text="Login" HeightRequest="43"
                     Clicked="Button_Clicked"
                     BackgroundColor="White"
                     TextColor="Black"
                     CornerRadius="15"
-                    />
+                    IsEnabled="False" >
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference UsernameTxt},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference pwd},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True" />
+                            <!-- multiple Setter elements are allowed -->
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
 
 
-            <Button Text="Register"
-                    Clicked="Register_btn_Clicked"
-                    BackgroundColor="White"
-                    TextColor="black" 
-                    Scale="1"
-                    CornerRadius="15"/>
 
-            <!-- 2. Register 
-            <Label Text="Register"
+                <Label Text="Not Registered? Click Here!" 
                    Scale="1.4"
                    x:Name="RegistrationBtn"
                    TextColor="White"
                    Margin="20"
                    HorizontalTextAlignment="Center"
                    TextDecorations="Underline">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label> -->
-        </StackLayout>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                    </Label>
+                
+
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

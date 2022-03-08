@@ -10,7 +10,6 @@ E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\PlentyOfPaws.AssemblyI
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\PlentyOfPaws.csproj.CoreCompileInputs.cache
 E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\PlentyOfPaws.deps.json
 E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\PlentyOfPaws.dll
-E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\ref\PlentyOfPaws.dll
 E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\PlentyOfPaws.pdb
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\XamlC.stamp
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\PlentyOfPaws.dll
@@ -22,3 +21,4 @@ E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\Mono.Android.dll
 E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\Mono.Android.pdb
 E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.0\Mono.Android.xml
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\PlentyOfPaws.csproj.CopyComplete
+E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.0\refint\PlentyOfPaws.dll

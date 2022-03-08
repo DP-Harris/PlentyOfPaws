@@ -2,7 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PlentyOfPaws.Models;
-
+using Xamarin.Essentials;
+using PlentyOfPaws.Services;
 
 namespace PlentyOfPaws.Views
 {
@@ -10,6 +11,7 @@ namespace PlentyOfPaws.Views
     public partial class RegistrationModal : ContentPage
     {
         User NewUser = new User();
+        DataBaseConnection db = new DataBaseConnection();
         Location Location = new Location();
         string FirstPass;
         string SecoundPass;
@@ -29,9 +31,14 @@ namespace PlentyOfPaws.Views
             await Shell.Current.GoToAsync("//login");
             AssignPass();
             Console.WriteLine("Registration successful");
-            NewUser.UserLocation = Location.GetCurrentLocation().ToString();
+            Location = await Geolocation.GetLocationAsync();
+            NewUser.UserLatitude = Location.Latitude.ToString();
+            NewUser.UserLongitude = Location.Longitude.ToString();
             NewUser.AddtoList(NewUser);
             NewUser.PrintUserInfo(NewUser);
+            db.OpenConection();
+           // db.ExecuteQueries("SELECT * FROM tbl.user");
+            
         }
 
         private void userEmail_TextChanged(object sender, TextChangedEventArgs e)

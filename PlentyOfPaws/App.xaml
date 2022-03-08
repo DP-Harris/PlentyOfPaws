@@ -2,7 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:PlentyOfPaws.Services"
              mc:Ignorable="d"
              x:Class="PlentyOfPaws.App">
     <Application.Resources>
@@ -15,7 +15,8 @@
 
             <!-- Lets color for all shell and tab-bar visuals within the app, main color is binded to WindowBackgroundColor -->
             <Color x:Key="NavigationPrimary">#1F1D2B </Color>
-        <Color x:Key="WindowBackgroundColor">#ADD8E6</Color>
+            <Color x:Key="WindowBackgroundColor">#6495ED
+            </Color>
         <Style x:Key="BaseStyle" TargetType="Element">
             <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
             <Setter Property="Shell.ForegroundColor" Value="DarkSeaGreen" />
@@ -28,6 +29,7 @@
             <Setter Property="Shell.TabBarTitleColor" Value="White"/>
         </Style>
         <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+        <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

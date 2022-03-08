@@ -3,52 +3,108 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:PlentyOfPaws.Services"
              mc:Ignorable="d"
+             
              Shell.PresentationMode="ModalAnimated"
              x:Class="PlentyOfPaws.Views.RegistrationModal">
-    
-    
+
+
+
     <ContentPage.Content>
-        <!-- Adds information boxes on the registration page.-->
-        <!-- Sets placeholder text for all entry's on the registration page and event handlers upon the text been changed to access the data entered -->
-        <StackLayout Spacing="12" Margin="50,15">
-            <Entry
+
+
+        <Grid>
+            <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
+                <BoxView.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="White" Offset="0.3"/>
+                        <GradientStop Color="CornflowerBlue" Offset="0.5" />
+                        <GradientStop Color="Beige" Offset="0.7" />
+                        <GradientStop Color="DarkBlue" Offset="1.0" />
+
+
+                    </LinearGradientBrush>
+                </BoxView.Background>
+
+
+
+
+            </BoxView>
+            <!-- Adds information boxes on the registration page.-->
+            <!-- Sets placeholder text for all entry's on the registration page and event handlers upon the text been changed to access the data entered -->
+            <StackLayout Spacing="12" Margin="50,15" VerticalOptions="CenterAndExpand">
+                <Entry
                 x:Name="userEmail"
+                TextColor="White"
+                PlaceholderColor="#f1f1f1"
                 Placeholder="Email" 
                 TextChanged="userEmail_TextChanged"
                 />
-            <Entry
+                <Entry
                 x:Name="userName"
+                TextColor="White"
+                PlaceholderColor="#f1f1f1"
                 Placeholder="Name"
                 TextChanged="userName_TextChanged"/>
-            <Entry 
+                <Entry 
                 x:Name="userPassword"
+                TextColor="White"
+                PlaceholderColor="#f1f1f1"
                 Placeholder="Password"
                 TextChanged="userPassword_TextChanged"/>
-            <Entry 
+                <Entry 
                 x:Name="confirmuserPassword"
+                TextColor="White"
+                PlaceholderColor="#f1f1f1"
                 Placeholder="Confirm password" 
                 TextChanged="confirmuserPassword_TextChanged"/>
 
-            <!-- Register button design and click handler-->
-            <Button Text="Register"
-                    BackgroundColor="Blue"
+                <!-- Register button design and click handler-->
+                <Button x:Name="RegButton" Text="Register"
+                    BackgroundColor="White"
                     Clicked="Register_User_btn_Clicked"
-                    TextColor="White"
-                    CornerRadius="15"/>
+                    TextColor="Black"
+                    CornerRadius="15" 
+                    IsEnabled="False" >
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference userEmail},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference userName},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference userPassword},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference confirmuserPassword},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True" />
+                            <!-- multiple Setter elements are allowed -->
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
 
-            <!-- Cancel button and handler to return to login page -->
-            <Label Text="Cancel"
+                <!-- Cancel button and handler to return to login page -->
+                <Label Text="Cancel"
                    x:Name="CancelBtn"
-                   TextColor="#333333"
+                   TextColor="White"
                    Margin="20"
                    HorizontalTextAlignment="Center"
-                   TextDecorations="Underline">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
+                   TextDecorations="Underline"
+                   FontSize="Large">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
                         Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>
+
