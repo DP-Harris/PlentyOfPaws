@@ -1,61 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+using MySqlConnector;
 
 namespace PlentyOfPaws.Services
 {
     public class DataBaseConnection
     {
-        
-        public static string server = "localhost";
-        public static string database = "teststuff";
-        public static string username = "root";
-        public static string password = "";
-
-        string ConnectionString = "SERVER="+server+";"+"DATABASE="+database+";"+"UID="+username+";"+"PASSWORD="+password+";";
-        SqlConnection con;
-
-        public void OpenConection()
+        public void run()
         {
-             con = new SqlConnection(ConnectionString);
-             con.Open();
+            string query = "SELECT * FROM tbl_user";
 
-            Console.WriteLine(ConnectionString);
+            string passwsd = "";
+
+            //Connection info
+            string MySQLConnectionString = $"server=127.0.0.1;database=db_account_info;user id=root;password={passwsd};";
+
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            //Runs query
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+            commanddb.CommandTimeout = 60;
+
+            try
+            {
+                Console.WriteLine("NOT OPEN");
+                Console.WriteLine(MySQLConnectionString);
+                dbConnect.Open();
+                Console.WriteLine("OPEN");
+
+                MySqlDataReader reader = commanddb.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //1 GetString() per row
+                        Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2) + " - " + reader.GetString(3) + " - " + reader.GetString(4));
+                        Console.WriteLine("Worked");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                //Error msg
+                Console.WriteLine("Something went wrong\n" + e.StackTrace);
+            }
         }
-
-
-        public void CloseConnection()
-        {
-            con.Close();
-        }
-
-
-        public void ExecuteQueries(string Query_)
-        {
-            SqlCommand cmd = new SqlCommand(Query_, con);
-            cmd.ExecuteNonQuery();
-        }
-
-
-        public SqlDataReader DataReader(string Query_)
-        {
-            SqlCommand cmd = new SqlCommand(Query_, con);
-            SqlDataReader dr = cmd.ExecuteReader();
-            return dr;
-        }
-
-
-        public object ShowDataInGridView(string Query_)
-        {
-            SqlDataAdapter dr = new SqlDataAdapter(Query_, ConnectionString);
-            DataSet ds = new DataSet();
-            dr.Fill(ds);
-            object dataum = ds.Tables[0];
-            return dataum;
-        }
-
     }
 }

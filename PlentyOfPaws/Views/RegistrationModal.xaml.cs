@@ -36,9 +36,7 @@ namespace PlentyOfPaws.Views
             NewUser.UserLongitude = Location.Longitude.ToString();
             NewUser.AddtoList(NewUser);
             NewUser.PrintUserInfo(NewUser);
-            db.OpenConection();
-           // db.ExecuteQueries("SELECT * FROM tbl.user");
-            
+            db.run();
         }
 
         private void userEmail_TextChanged(object sender, TextChangedEventArgs e)
