@@ -7,12 +7,13 @@ namespace PlentyOfPaws.Services
     {
         public void run()
         {
-            string query = "SELECT * FROM tbl_user";
+            string query = "UPDATE `tbl_user` SET `UserName` = 'THORN' WHERE `tbl_user`.`UserID` = 1";
 
-            string passwsd = "";
+            string passwsd = "root";
 
             //Connection info
-            string MySQLConnectionString = $"server=127.0.0.1;database=db_account_info;user id=root;password={passwsd};";
+            // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
+            string MySQLConnectionString = $"server=172.20.10.6;database=db_account_info;user id=Dan;password={passwsd};";
 
             //Connects to DB
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
@@ -21,29 +22,13 @@ namespace PlentyOfPaws.Services
             MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
             commanddb.CommandTimeout = 60;
 
-            try
-            {
-                Console.WriteLine("NOT OPEN");
-                Console.WriteLine(MySQLConnectionString);
+            MySqlCommand newCommand = new MySqlCommand();
+
+                
                 dbConnect.Open();
-                Console.WriteLine("OPEN");
 
                 MySqlDataReader reader = commanddb.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        //1 GetString() per row
-                        Console.WriteLine(reader.GetString(0) + " - " + reader.GetString(1) + " - " + reader.GetString(2) + " - " + reader.GetString(3) + " - " + reader.GetString(4));
-                        Console.WriteLine("Worked");
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                //Error msg
-                Console.WriteLine("Something went wrong\n" + e.StackTrace);
-            }
+               
         }
     }
 }

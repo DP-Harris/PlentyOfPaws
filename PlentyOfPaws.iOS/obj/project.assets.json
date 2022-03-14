@@ -2380,27 +2380,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cocknose\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\heads\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\heads\\source\\repos\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
       "projectName": "PlentyOfPaws.iOS",
-      "projectPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
-      "packagesPath": "C:\\Users\\cocknose\\.nuget\\packages\\",
-      "outputPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\obj\\",
+      "projectPath": "C:\\Users\\heads\\source\\repos\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
+      "packagesPath": "C:\\Users\\heads\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\heads\\source\\repos\\PlentyOfPaws\\PlentyOfPaws.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\cocknose\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\heads\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -2414,8 +2411,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj": {
-              "projectPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj"
+            "C:\\Users\\heads\\source\\repos\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj": {
+              "projectPath": "C:\\Users\\heads\\source\\repos\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj"
             }
           }
         }
