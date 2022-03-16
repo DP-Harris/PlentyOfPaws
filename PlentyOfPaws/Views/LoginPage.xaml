@@ -4,83 +4,182 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Login"
     Shell.NavBarIsVisible="False"
-    x:Class="PlentyOfPaws.Views.LoginPage">
+    xmlns:effects="clr-namespace:PlentyOfPaws.Effects"
+    x:Class="PlentyOfPaws.Views.LoginPage"
+    xmlns:fontawesome="clr-namespace:FontAwesome"
+    >
 
+    <!--<Image Source="bgforlogin.png" Aspect="AspectFill"></Image> -->
 
     <ContentPage.Content>
         
+        
+        
         <Grid>
+
             <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
                 <BoxView.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="White" Offset="0.3"/>
-                        <GradientStop Color="CornflowerBlue" Offset="0.5" />
-                        <GradientStop Color="Beige" Offset="0.7" />
-                        <GradientStop Color="DarkBlue" Offset="1.0" />
-
-
+                        <GradientStop Color="AliceBlue" Offset="0.3"/>
+                        <GradientStop Color="#FF4646" Offset="1.0" />
+                        <GradientStop Color="AliceBlue" Offset="1.0" />
+                        <GradientStop Color="#FF4646" Offset="0.7" />
                     </LinearGradientBrush>
                 </BoxView.Background>
-                
-             
-            
-                
             </BoxView>
 
-          
-            <StackLayout Margin="50,15" VerticalOptions="Center" Spacing="12">
+            <StackLayout Orientation="Horizontal" Spacing="5" VerticalOptions="StartAndExpand" Margin="20,90" Scale="0.7">
+                <Label HorizontalOptions="CenterAndExpand" 
+                    Text="{StaticResource DogIcon}"
+                    FontSize="Header"
+                    FontFamily="FAS"
+                    >
+                </Label>
 
-                <Entry  x:Name="UsernameTxt" 
-                        Placeholder="Email" 
-                        TextColor="White"
-                        PlaceholderColor="#f1f1f1"        
-                />
+                <Label HorizontalOptions="CenterAndExpand"
+                    Text="{StaticResource BoneIcon}"
+                    FontSize="Header"
+                    FontFamily="FAS"
+                    >
+                </Label>
 
-                <Entry x:Name="pwd"
-                       Placeholder="Password"  
-                       IsPassword="True" 
-                       PlaceholderColor="#f1f1f1"
-                       TextColor="White"
+                <Label HorizontalOptions="CenterAndExpand" 
+                    Text="{StaticResource PawIcon}"
+                    FontSize="Header"
+                    FontFamily="FAS"
+                    >
+                </Label>
+            </StackLayout>
+
+            <StackLayout Margin=" 0,235">
+                    <Label
+                            Text="Welcome"
+                            TextColor="Black"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Large">
+                    </Label>
+
+                <Label
+                            Text="Sign in to continue"
+                            TextColor="Black"
+                            HorizontalTextAlignment="Center">
+                </Label>
+                </StackLayout>
+
+                <StackLayout Margin="25,310" VerticalOptions="Center" Spacing="17">
+
+
+
+                    <Frame
+                       Padding="0"
+                       CornerRadius="50"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
                        
-                />
+                       Scale="0.96">
 
-                <Button Text="Login" HeightRequest="43"
-                    Clicked="Button_Clicked"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    CornerRadius="15"
-                    IsEnabled="False" >
-                    <Button.Triggers>
-                        <MultiTrigger TargetType="Button">
-                            <MultiTrigger.Conditions>
-                                <BindingCondition Binding="{Binding Source={x:Reference UsernameTxt},
-                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
-                                    Value="true" />
-                                <BindingCondition Binding="{Binding Source={x:Reference pwd},
-                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
-                                    Value="true" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="True" />
-                            <!-- multiple Setter elements are allowed -->
-                        </MultiTrigger>
-                    </Button.Triggers>
-                </Button>
+                    <Entry  x:Name="UsernameTxt"  
+                                 
+                            Placeholder="Email" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>        
+                         
+                    </Frame>
 
+                    <Frame
+                       Padding="0"
+                       CornerRadius="50"
+                       IsClippedToBounds="True"
+                       BorderColor="LightSalmon"
+                       Scale="0.96">
 
 
-                <Label Text="Not Registered? Click Here!" 
-                   Scale="1.4"
-                   x:Name="RegistrationBtn"
-                   TextColor="White"
-                   Margin="20"
-                   HorizontalTextAlignment="Center"
-                   TextDecorations="Underline">
+
+
+                    <Entry x:Name="pwd"
+                           Placeholder="Password"  
+                           IsPassword="True" 
+                           PlaceholderColor="Black"
+                           TextColor="Black"
+                           BackgroundColor="#f2f2f2"
+                           FontSize="Subtitle" >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+                    
+
+                </Frame>
+
+                    <StackLayout Margin="75,10" VerticalOptions="Center" Spacing="0">
+                        <Button Text="Sign IN" HeightRequest="40" 
+                                    Clicked="Button_Clicked"
+                                    BackgroundColor="Black"
+                                    TextColor="White"
+                                    CornerRadius="15"
+                                    IsEnabled="False" >
+                            <Button.Triggers>
+                                <MultiTrigger TargetType="Button">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference UsernameTxt},
+                                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                                    Value="true" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference pwd},
+                                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                                    Value="true" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                    <!-- multiple Setter elements are allowed -->
+                                </MultiTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </StackLayout>
+
+
+
+                
+                 
+
+                <StackLayout Spacing="1" VerticalOptions="StartAndExpand" Margin="20,210" Scale="0.8">
+                    <Label HorizontalOptions="Center" 
+                    Text="{StaticResource CopyrightIcon}"
+                    FontSize="Medium"
+                    FontFamily="FAS"
+                    >
+                    </Label>
+                    <Label HorizontalOptions="Center"
+                           Text="PlentyOfPaws 2022"
+                           TextColor="Black"
+                           FontSize="Small">
+                        
+                    </Label>
+                </StackLayout>
+
+
+                </StackLayout>
+            
+            
+            
+            <StackLayout Margin="0,210" VerticalOptions="EndAndExpand" Spacing="10">
+                <Label Text="New User? Sign up!"
+                           Scale="1.3"
+                           x:Name="RegistrationBtn"
+                           TextColor="Black"
+                           Margin="20"
+                           HorizontalTextAlignment="Center"
+                           TextDecorations="Underline">
+
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Label.GestureRecognizers>
-                    </Label>
-                
 
+                </Label>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -67,5 +67,10 @@ namespace PlentyOfPaws.Views
                 NewUser.UserPassword = FirstPass;
             }
         }
+
+        private async void TermsandConditionsLabelClicke(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//login");
+        }
     }
 }

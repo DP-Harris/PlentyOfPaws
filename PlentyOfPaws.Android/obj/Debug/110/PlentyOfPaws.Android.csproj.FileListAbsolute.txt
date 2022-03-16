@@ -1226,3 +1226,7 @@ C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\stam
 C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\basebg.png
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\newproject.png
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\bg.svg
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\bgforlogin.png

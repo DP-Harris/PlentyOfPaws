@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:PlentyOfPaws.Services"
+             xmlns:local="clr-namespace:PlentyOfPaws.Services" xmlns:effects="clr-namespace:PlentyOfPaws.Effects"
              mc:Ignorable="d"
              
              Shell.PresentationMode="ModalAnimated"
@@ -18,12 +18,10 @@
             <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
                 <BoxView.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="White" Offset="0.3"/>
-                        <GradientStop Color="CornflowerBlue" Offset="0.5" />
-                        <GradientStop Color="Beige" Offset="0.7" />
-                        <GradientStop Color="DarkBlue" Offset="1.0" />
-
-
+                        <GradientStop Color="AliceBlue" Offset="0.3"/>
+                        <GradientStop Color="#FF4646" Offset="1.0" />
+                        <GradientStop Color="AliceBlue" Offset="1.0" />
+                        <GradientStop Color="#FF4646" Offset="0.7" />
                     </LinearGradientBrush>
                 </BoxView.Background>
 
@@ -33,75 +31,177 @@
             </BoxView>
             <!-- Adds information boxes on the registration page.-->
             <!-- Sets placeholder text for all entry's on the registration page and event handlers upon the text been changed to access the data entered -->
-            <StackLayout Spacing="12" Margin="50,15" VerticalOptions="CenterAndExpand">
-                <Entry
-                x:Name="userEmail"
-                TextColor="White"
-                PlaceholderColor="#f1f1f1"
-                Placeholder="Email" 
-                TextChanged="userEmail_TextChanged"
-                />
-                <Entry
-                x:Name="userName"
-                TextColor="White"
-                PlaceholderColor="#f1f1f1"
-                Placeholder="Name"
-                TextChanged="userName_TextChanged"/>
-                <Entry 
-                x:Name="userPassword"
-                TextColor="White"
-                PlaceholderColor="#f1f1f1"
-                Placeholder="Password"
-                TextChanged="userPassword_TextChanged"/>
-                <Entry 
-                x:Name="confirmuserPassword"
-                TextColor="White"
-                PlaceholderColor="#f1f1f1"
-                Placeholder="Confirm password" 
-                TextChanged="confirmuserPassword_TextChanged"/>
+            <StackLayout Margin="25,200" VerticalOptions="CenterAndExpand" Spacing="17">
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="30"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       Scale="0.96">
+
+                    <Entry   x:Name="userEmail"  
+                                 
+                            Placeholder="Email" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            TextChanged="userEmail_TextChanged"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="50"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       
+                       Scale="0.96">
+
+                    <Entry   x:Name="userName"
+                                 
+                            Placeholder="Name"
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            TextChanged="userName_TextChanged"
+                            FontSize="Subtitle" >
+                           
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="50"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       
+                       Scale="0.96">
+
+                    <Entry   x:Name="userPassword"
+                                 
+                             Placeholder="Password"
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            TextChanged="userPassword_TextChanged"
+                            FontSize="Subtitle"  >
+                    <Entry.Effects>
+                        <effects:PlainEntry/>
+                    </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="50"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       
+                       Scale="0.96">
+
+                    <Entry   x:Name="confirmuserPassword"
+                                 
+                            Placeholder="Confirm password" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            TextChanged="confirmuserPassword_TextChanged"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
 
                 <!-- Register button design and click handler-->
-                <Button x:Name="RegButton" Text="Register"
-                    BackgroundColor="White"
+                <StackLayout Margin="75,20" VerticalOptions="Center" Spacing="4">
+                    <Button x:Name="RegButton" Text="Create account" 
+                            HeightRequest="40"
                     Clicked="Register_User_btn_Clicked"
-                    TextColor="Black"
-                    CornerRadius="15" 
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="15"
                     IsEnabled="False" >
-                    <Button.Triggers>
-                        <MultiTrigger TargetType="Button">
-                            <MultiTrigger.Conditions>
-                                <BindingCondition Binding="{Binding Source={x:Reference userEmail},
+                        <Button.Triggers>
+                            <MultiTrigger TargetType="Button">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding Source={x:Reference userEmail},
                                     Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
                                     Value="true" />
-                                <BindingCondition Binding="{Binding Source={x:Reference userName},
+                                    <BindingCondition Binding="{Binding Source={x:Reference userName},
                                     Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
                                     Value="true" />
-                                <BindingCondition Binding="{Binding Source={x:Reference userPassword},
+                                    <BindingCondition Binding="{Binding Source={x:Reference userPassword},
                                     Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
                                     Value="true" />
-                                <BindingCondition Binding="{Binding Source={x:Reference confirmuserPassword},
+                                    <BindingCondition Binding="{Binding Source={x:Reference confirmuserPassword},
                                     Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
                                     Value="true" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="True" />
-                            <!-- multiple Setter elements are allowed -->
-                        </MultiTrigger>
-                    </Button.Triggers>
-                </Button>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True" />
+                                <!-- multiple Setter elements are allowed -->
+                            </MultiTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </StackLayout>
+
+                <StackLayout Margin="10,10" VerticalOptions="CenterAndExpand" Spacing="1">
+                    <Label Text="By clicking create account you are agreeing to our"
+                           TextColor="Black"
+                           FontSize="Small"
+                           HorizontalOptions="CenterAndExpand"
+                           >
+
+                    </Label>
+                    <Label Text="Terms and Conditions"
+                           x:Name="TandCs"
+                           TextColor="Black"
+                           TextDecorations="Underline"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="Small">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TermsandConditionsLabelClicke" />
+                        </Label.GestureRecognizers>
+
+                    </Label>
+                </StackLayout>
+
+                
+        
 
                 <!-- Cancel button and handler to return to login page -->
-                <Label Text="Cancel"
+                
+            
+            </StackLayout>
+
+            <StackLayout  Margin="10,10" VerticalOptions="EndAndExpand" Spacing="1">
+                <Label Text="Back to User Login"
                    x:Name="CancelBtn"
-                   TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                   TextColor="Black"
                    Margin="20"
-                   HorizontalTextAlignment="Center"
                    TextDecorations="Underline"
-                   FontSize="Large">
+                   FontSize="Medium">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
-                        Tapped="TapGestureRecognizer_Tapped"/>
+                                Tapped="TapGestureRecognizer_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
+
             </StackLayout>
         </Grid>
 

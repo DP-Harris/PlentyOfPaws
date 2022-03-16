@@ -13,7 +13,7 @@ namespace PlentyOfPaws.Services
 
             //Connection info
             // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
-            string MySQLConnectionString = $"server=172.20.10.6;database=db_account_info;user id=Dan;password={passwsd};";
+            string MySQLConnectionString = $"server=192.168.0.100;database=db_account_info;user id=Dan;password={passwsd};";
 
             //Connects to DB
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);

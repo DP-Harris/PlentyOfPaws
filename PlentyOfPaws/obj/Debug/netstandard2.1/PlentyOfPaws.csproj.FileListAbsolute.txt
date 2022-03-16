@@ -46,3 +46,7 @@ C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.1\P
 C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.1\refint\PlentyOfPaws.dll
 C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.1\PlentyOfPaws.pdb
 C:\Users\heads\source\repos\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.1\ref\PlentyOfPaws.dll
+E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.1\Xamarin.Forms.Platform.Android.dll
+E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.1\FormsViewGroup.dll
+E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.1\Xamarin.Forms.Platform.Android.pdb
+E:\TSE\PlentyOfPaws\PlentyOfPaws\bin\Debug\netstandard2.1\FormsViewGroup.pdb
