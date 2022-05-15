@@ -29,14 +29,15 @@ namespace PlentyOfPaws.Views
         private async void Register_User_btn_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//login");
-            AssignPass();
+            //AssignPass();
             Console.WriteLine("Registration successful");
             Location = await Geolocation.GetLocationAsync();
             NewUser.UserLatitude = Location.Latitude.ToString();
             NewUser.UserLongitude = Location.Longitude.ToString();
             NewUser.AddtoList(NewUser);
             NewUser.PrintUserInfo(NewUser);
-            db.run();
+          //   db.RegisterUser(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLatitude + "," + NewUser.UserLongitude);
+           db.run(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLatitude + "," + NewUser.UserLongitude);
         }
 
         private void userEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -58,15 +59,16 @@ namespace PlentyOfPaws.Views
         private void confirmuserPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
            SecoundPass = e.NewTextValue;
+           NewUser.UserPassword = SecoundPass;
         }
 
-        private void AssignPass()
-        {
-            if (FirstPass == SecoundPass)
-            {
-                NewUser.UserPassword = FirstPass;
-            }
-        }
+        //private void AssignPass()
+        //{
+        //    if (FirstPass == SecoundPass)
+        //    {
+        //        NewUser.UserPassword = FirstPass;
+        //    }
+        //}
 
         private async void TermsandConditionsLabelClicke(object sender, EventArgs e)
         {
