@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlentyOfPaws.Models;
+using System;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -25,7 +26,7 @@ namespace PlentyOfPaws.ViewModels
 
         }
 
-        public string Username { get; } = "Demo";
+        public string Username { get; } = "GET USERS NAME";
 
         public ICommand OpenWebCommand { get; }
 

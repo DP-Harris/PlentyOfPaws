@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MySqlConnector;
 
 namespace PlentyOfPaws.Services
@@ -70,6 +71,39 @@ namespace PlentyOfPaws.Services
             dbConnect.Close();
             // No matches was found so we can return false to fail validation of the login attempt 
             return false;
+        }
+
+        public void GetUserDetails(string email, string password)
+        {
+            List<string> UserInfo = new List<string>();
+
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            // Query to be ran 
+            query = $"SELECT* FROM tbl_user WHERE Email = '{email}' AND EncryptedPassword = '{password}'";
+
+            // Opens Database connection
+            dbConnect.Open();
+
+            // Runs Query into the DB.
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            // Executes the Query.
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+            // If rows is > 0 then email and password match and we can log the user in else we can fail validation.
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        UserInfo.Add(reader.GetString(i));
+                    }
+                }
+
+            }
         }
     }
 }

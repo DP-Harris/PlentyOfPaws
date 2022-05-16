@@ -31,8 +31,8 @@ namespace PlentyOfPaws.Views
             password = e.NewTextValue;
         }
 
-        // Send username and password and email to databse 
-        // Display error and rediect to login if invalid 
+        // Send user name and password and email to database 
+        // Display error and redirect to login if invalid 
         // If valid send to main
 
         private async void Login(object sender, EventArgs e)
@@ -60,20 +60,5 @@ namespace PlentyOfPaws.Views
         {
             await Shell.Current.GoToAsync("//login/registration");
         }
-
-        //public bool ValidateLoginDetails(string EmailAddress, string Password)
-        //{
-        //    OpenConnection();
-        //    //Setting up the Query command passing in the necessary parameters 
-        //    string Query = "SELECT * FROM usertable WHERE emailAddress = @emailAddress AND password = @password";
-        //    MySqlCommand Command = new MySqlCommand(Query, Connection);
-        //    Command.Parameters.Add("@emailAddress", MySqlDbType.VarChar).Value = EmailAddress;
-        //    Command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Password;
-
-        //    MySqlDataReader DataReader = Command.ExecuteReader();
-        //    bool Result = DataReader.HasRows;
-        //    CloseConnection();
-        //    return Result;
-        //}
     }
 }

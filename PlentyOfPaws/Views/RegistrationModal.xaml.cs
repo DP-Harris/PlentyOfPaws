@@ -12,9 +12,6 @@ namespace PlentyOfPaws.Views
     {
         User NewUser = new User();
         DataBaseConnection db = new DataBaseConnection();
-        Location Location = new Location();
-        string FirstPass;
-        string SecoundPass;
 
         public RegistrationModal()
         {
@@ -30,17 +27,12 @@ namespace PlentyOfPaws.Views
         {
             await Shell.Current.GoToAsync("//login");
             Console.WriteLine("Registration successful");
-            Location = await Geolocation.GetLocationAsync();
-            NewUser.UserLatitude = Location.Latitude.ToString();
-            NewUser.UserLongitude = Location.Longitude.ToString();
             NewUser.AddtoList(NewUser);
-            NewUser.PrintUserInfo(NewUser);
-            db.RegisterUser(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLatitude + "," + NewUser.UserLongitude);
+            db.RegisterUser(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLocation);
         }
 
         private void userEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Validate email.
             NewUser.UserEmail = e.NewTextValue;
         }
 
@@ -51,13 +43,12 @@ namespace PlentyOfPaws.Views
 
         private void userPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
-           FirstPass = e.NewTextValue;
+            NewUser.UserPassword = e.NewTextValue;
         }
 
-        private void confirmuserPassword_TextChanged(object sender, TextChangedEventArgs e)
+        private void LocationAdded_TextChanged(object sender, TextChangedEventArgs e)
         {
-           SecoundPass = e.NewTextValue;
-           NewUser.UserPassword = SecoundPass;
+           NewUser.UserLocation = e.NewTextValue;
         }
 
         private async void TermsandConditionsLabelClicke(object sender, EventArgs e)

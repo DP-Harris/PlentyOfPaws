@@ -112,11 +112,11 @@
 
                     <Entry   x:Name="confirmuserPassword"
                                  
-                            Placeholder="Confirm password" 
+                            Placeholder="Location" 
                             PlaceholderColor="Black"
                             TextColor="Black"                                                          
                             BackgroundColor="#f2f2f2"
-                            TextChanged="confirmuserPassword_TextChanged"
+                            TextChanged="LocationAdded_TextChanged"
                             FontSize="Subtitle"  >
                         <Entry.Effects>
                             <effects:PlainEntry/>
