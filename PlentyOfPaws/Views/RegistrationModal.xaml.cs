@@ -29,7 +29,6 @@ namespace PlentyOfPaws.Views
         private async void Register_User_btn_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//login");
-            //AssignPass();
             Console.WriteLine("Registration successful");
             Location = await Geolocation.GetLocationAsync();
             NewUser.UserLatitude = Location.Latitude.ToString();

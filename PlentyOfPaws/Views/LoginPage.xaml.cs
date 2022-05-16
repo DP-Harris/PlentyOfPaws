@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlentyOfPaws.Services;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -7,6 +8,7 @@ namespace PlentyOfPaws.Views
 {
     public partial class LoginPage : ContentPage
     {
+        DataBaseConnection db = new DataBaseConnection();
         private string email;
         private string password;
 
@@ -15,7 +17,7 @@ namespace PlentyOfPaws.Views
             InitializeComponent();
         }
 
-        // Once user enters email state will be added to to email var
+        // Once user enters email state will be added to email var
         private void EmailEntered(object sender, TextChangedEventArgs e)
         {
             // User email .
@@ -33,9 +35,20 @@ namespace PlentyOfPaws.Views
         // Display error and rediect to login if invalid 
         // If valid send to main
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void Login(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//main");
+
+            // await Shell.Current.GoToAsync("//main");
+            if (db.ValidateUser(email, password) == true)
+            {
+                await Shell.Current.GoToAsync("//main");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Login", "You have entered incorrect details", "TRY AGAIN");
+            }
+
+
         }
 
         private async void RegisterGesture_Tapped(object sender, EventArgs e)

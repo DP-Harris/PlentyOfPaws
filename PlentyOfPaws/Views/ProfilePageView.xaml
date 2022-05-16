@@ -19,11 +19,19 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+        
+        <StackLayout BackgroundColor="#222222">
+            
+            
+            
+            <Label x:Name="Name"
+                Text="{Binding Username}"
                 VerticalOptions="CenterAndExpand" 
+                TextColor="White"
+                FontSize="Large"
                 HorizontalOptions="CenterAndExpand" />
-
+                
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

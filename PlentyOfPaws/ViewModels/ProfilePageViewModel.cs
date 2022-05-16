@@ -25,6 +25,8 @@ namespace PlentyOfPaws.ViewModels
 
         }
 
+        public string Username { get; } = "Demo";
+
         public ICommand OpenWebCommand { get; }
 
         public ICommand RestartCommand { get; }

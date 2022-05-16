@@ -121,7 +121,7 @@
 
                     <StackLayout Margin="75,10" VerticalOptions="Center" Spacing="0">
                         <Button Text="Sign IN" HeightRequest="40" 
-                                    Clicked="Button_Clicked"
+                                    Clicked="Login"
                                     BackgroundColor="Black"
                                     TextColor="White"
                                     CornerRadius="15"
