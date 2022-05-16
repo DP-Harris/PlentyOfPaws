@@ -36,8 +36,7 @@ namespace PlentyOfPaws.Views
             NewUser.UserLongitude = Location.Longitude.ToString();
             NewUser.AddtoList(NewUser);
             NewUser.PrintUserInfo(NewUser);
-          //   db.RegisterUser(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLatitude + "," + NewUser.UserLongitude);
-           db.run(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLatitude + "," + NewUser.UserLongitude);
+            db.RegisterUser(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLatitude + "," + NewUser.UserLongitude);
         }
 
         private void userEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -61,14 +60,6 @@ namespace PlentyOfPaws.Views
            SecoundPass = e.NewTextValue;
            NewUser.UserPassword = SecoundPass;
         }
-
-        //private void AssignPass()
-        //{
-        //    if (FirstPass == SecoundPass)
-        //    {
-        //        NewUser.UserPassword = FirstPass;
-        //    }
-        //}
 
         private async void TermsandConditionsLabelClicke(object sender, EventArgs e)
         {

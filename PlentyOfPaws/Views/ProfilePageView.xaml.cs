@@ -11,16 +11,10 @@ namespace PlentyOfPaws.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePageView : ContentPage
     {
-        IFilePicker file = new IFilePicker();
-
+  
         public ProfilePageView()
         {
             InitializeComponent();
-        }
-
-        private void Image_Button_Clicked(object sender, EventArgs e)
-        {
-            file.PickMultipleFiles();
         }
     }
 }

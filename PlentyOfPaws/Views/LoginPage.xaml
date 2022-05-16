@@ -84,7 +84,8 @@
                             PlaceholderColor="Black"
                             TextColor="Black"                                                          
                             BackgroundColor="#f2f2f2"
-                            FontSize="Subtitle"  >
+                            FontSize="Subtitle"
+                            TextChanged="EmailEntered">
                         <Entry.Effects>
                             <effects:PlainEntry/>
                         </Entry.Effects>
@@ -108,7 +109,8 @@
                            PlaceholderColor="Black"
                            TextColor="Black"
                            BackgroundColor="#f2f2f2"
-                           FontSize="Subtitle" >
+                           FontSize="Subtitle"
+                           TextChanged="PasswordEntered">
                         <Entry.Effects>
                             <effects:PlainEntry/>
                         </Entry.Effects>

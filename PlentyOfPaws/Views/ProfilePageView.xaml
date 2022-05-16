@@ -23,12 +23,6 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            
-            
-            <Button Text="Select Images"
-                    TextColor="Aquamarine"
-                    Padding="45"
-                    Clicked="Image_Button_Clicked"/>
 
         </StackLayout>
     </ContentPage.Content>
