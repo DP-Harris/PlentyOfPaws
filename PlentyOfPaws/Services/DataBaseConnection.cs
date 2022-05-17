@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySqlConnector;
+using PlentyOfPaws.Models;
 
 namespace PlentyOfPaws.Services
 {
@@ -10,8 +11,8 @@ namespace PlentyOfPaws.Services
 
         private static string passwsd = "root";
 
-        private static string server = "172.17.224.1";
-       // private static string server = "172.25.65.204";
+       // private static string server = "172.17.224.1";
+        private static string server = "172.25.65.204";
 
         //Connection info
         // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
@@ -76,6 +77,7 @@ namespace PlentyOfPaws.Services
         public void GetUserDetails(string email, string password)
         {
             List<string> UserInfo = new List<string>();
+            User CurrentUser = new User();
 
             //Connects to DB
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
@@ -97,12 +99,16 @@ namespace PlentyOfPaws.Services
             {
                 while (reader.Read())
                 {
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        UserInfo.Add(reader.GetString(i));
-                    }
+                    CurrentUser.UserName = reader["UserName"].ToString();
+                    CurrentUser.UserEmail = email;
+                    CurrentUser.UserLocation = reader["Location"].ToString();
+                    CurrentUser.UserID = int.Parse( reader["UserID"].ToString());
+
                 }
 
+                dbConnect.Close();
+
+                CurrentUser.AddtoList(CurrentUser);
             }
         }
     }

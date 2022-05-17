@@ -7,7 +7,7 @@ namespace PlentyOfPaws.Models
 {
     public class User
     {
-        public List<User> ActiveUsers = new List<User>();
+        public static List<User> ActiveUsers = new List<User>();
         public int UserID { get; set; }
         public string UserEmail { get; set; }
         public string UserName { get; set; }
@@ -17,7 +17,7 @@ namespace PlentyOfPaws.Models
 
         public User()
         {
-            UserID++;
+           
         }
 
         public void AddtoList(User user)
@@ -25,7 +25,13 @@ namespace PlentyOfPaws.Models
             ActiveUsers.Add(user);
         }
 
-        public List<User> ReturnUser() { return ActiveUsers; }
+        public List<User> ReturnUser()
+        { return ActiveUsers; }
+
+        public static User GetUser()
+        {
+            return ActiveUsers[0];
+        }
 
         // User Location; 
 

@@ -41,6 +41,7 @@ namespace PlentyOfPaws.Views
             // await Shell.Current.GoToAsync("//main");
             if (db.ValidateUser(email, password) == true)
             {
+                db.GetUserDetails(email, password);
                 await Shell.Current.GoToAsync("//main");
             }
             else

@@ -27,7 +27,6 @@ namespace PlentyOfPaws.Views
         {
             await Shell.Current.GoToAsync("//login");
             Console.WriteLine("Registration successful");
-            NewUser.AddtoList(NewUser);
             db.RegisterUser(NewUser.UserName, NewUser.UserEmail, NewUser.UserPassword, NewUser.UserLocation);
         }
 

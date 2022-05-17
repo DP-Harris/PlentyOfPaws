@@ -9,6 +9,7 @@ namespace PlentyOfPaws.ViewModels
 {
     public class ProfilePageViewModel : BaseViewModel
     {
+       
         public ProfilePageViewModel()
         {
             Title = "About";
@@ -26,7 +27,12 @@ namespace PlentyOfPaws.ViewModels
 
         }
 
-        public string Username { get; } = "GET USERS NAME";
+
+
+         public string Username { get; } = User.ActiveUsers[0].UserName;
+    //    public string Username { get; } = "Joke";
+
+
 
         public ICommand OpenWebCommand { get; }
 

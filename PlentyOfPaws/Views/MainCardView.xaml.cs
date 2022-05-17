@@ -15,6 +15,7 @@ namespace PlentyOfPaws.Views
         public MainCardView()
         {
             InitializeComponent();
+
         }
     }
 }
