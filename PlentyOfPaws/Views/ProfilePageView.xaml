@@ -21,17 +21,44 @@
     <ContentPage.Content>
         
         <StackLayout BackgroundColor="#222222">
-            
-            
-            
+
+            <Label x:Name="Profile"
+                Text="Profile"
+                VerticalOptions="CenterAndExpand" 
+                TextColor="White"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand" />
+
             <Label x:Name="Name"
                 Text="{Binding Username}"
                 VerticalOptions="CenterAndExpand" 
                 TextColor="White"
                 FontSize="Large"
                 HorizontalOptions="CenterAndExpand" />
+            
+
+            <Label x:Name="Email"
+                Text="{Binding Email}"
+                VerticalOptions="CenterAndExpand" 
+                TextColor="White"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label x:Name="Location"
+                Text="{Binding Location}"
+                VerticalOptions="CenterAndExpand" 
+                TextColor="White"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand" />
+
+            <Button Text="Add a dog"
+                    BackgroundColor="White"
+                    Clicked="GoToAddDogPage"
+                    Command="{Binding AddDogCommand}">
                 
-           
+            </Button>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -52,7 +52,7 @@ namespace PlentyOfPaws.Views
 
         private async void TermsandConditionsLabelClicke(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//login");
+            await Shell.Current.GoToAsync("//login/registration");
         }
     }
 }
