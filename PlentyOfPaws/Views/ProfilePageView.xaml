@@ -19,46 +19,58 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        
         <StackLayout BackgroundColor="#222222">
 
-            <Label x:Name="Profile"
+            <Frame Background="#222222">
+                <Label x:Name="Profile"
                 Text="Profile"
                 VerticalOptions="CenterAndExpand" 
                 TextColor="White"
-                FontSize="Large"
+                FontSize="Header"
+                       Scale="0.4"
                 HorizontalOptions="CenterAndExpand" />
+            </Frame>
+     
 
-            <Label x:Name="Name"
-                Text="{Binding Username}"
-                VerticalOptions="CenterAndExpand" 
+            <StackLayout BackgroundColor="#222222" VerticalOptions="StartAndExpand" Spacing="15" AnchorX="4" AnchorY="10">
+
+                <Label x:Name="Name"
+                Text="{Binding Username}" 
                 TextColor="White"
-                FontSize="Large"
-                HorizontalOptions="CenterAndExpand" />
-            
+                FontSize="Title"
+                 
+                 />
+
 
             <Label x:Name="Email"
-                Text="{Binding Email}"
-                VerticalOptions="CenterAndExpand" 
+                Text="{Binding Email}" 
                 TextColor="White"
-                FontSize="Large"
-                HorizontalOptions="CenterAndExpand" />
+                FontSize="Medium"
+                />
 
             <Label x:Name="Location"
-                Text="{Binding Location}"
-                VerticalOptions="CenterAndExpand" 
-                TextColor="White"
-                FontSize="Large"
-                HorizontalOptions="CenterAndExpand" />
+                Text="{Binding Location}"            
+                TextColor="White"                 
+                FontSize="Medium"
+                />
 
-            <Button Text="Add a dog"
-                    BackgroundColor="White"
-                    Clicked="GoToAddDogPage"
-                    Command="{Binding AddDogCommand}">
-                
-            </Button>
+       
+
+        </StackLayout>
+            <Frame BackgroundColor="#222222">
+
+                <Button x:Name="RegisterDog" 
+                    Text="Add Dog"
+                    Clicked="AddDogPage"
+                    Scale="2"
+                    BackgroundColor="#222222" 
+                    TextColor="White" >
+                </Button>
+
+            </Frame>
 
 
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

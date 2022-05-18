@@ -30,21 +30,12 @@ namespace PlentyOfPaws.ViewModels
             //   Shell.Current.GoToAsync("//adddog");
             //});
 
-
-
         }
 
 
-
          public string Username { get; } = User.ActiveUsers[0].UserName;
-         public string Email { get; } = User.ActiveUsers[0].UserEmail;
-         
+         public string Email { get; } = User.ActiveUsers[0].UserEmail;    
          public string Location { get; } = User.ActiveUsers[0].UserLocation;
-
-
-        
-        //    public string Username { get; } = "Joke";
-
 
 
         public ICommand OpenWebCommand { get; }

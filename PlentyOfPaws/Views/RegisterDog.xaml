@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:effects="clr-namespace:PlentyOfPaws.Effects"
+             x:Class="PlentyOfPaws.Views.RegisterDog">
+    <ContentPage.Content> 
+       
+
+        <!--   <Grid>
+            <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
+                <BoxView.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="AliceBlue" Offset="0.3"/>
+                        <GradientStop Color="#FF4646" Offset="1.0" />
+                        <GradientStop Color="AliceBlue" Offset="1.0" />
+                        <GradientStop Color="#FF4646" Offset="0.7" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+
+            </BoxView> -->
+
+
+        <StackLayout BackgroundColor="#222222">
+
+            <StackLayout Margin=" 0,40">
+                <Label
+                            Text="Woof Woof"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Large">
+                </Label>
+
+                <Label
+                            Text="Please Add you dogs information"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center">
+                </Label>
+            </StackLayout>
+
+            <StackLayout Margin="25,1" VerticalOptions="StartAndExpand" Spacing="17">
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="30"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       Scale="0.96">
+
+                    <Entry   x:Name="DogsName"  
+                                 
+                            Placeholder="Dogs Name" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="30"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       Scale="0.96">
+
+                    <Entry   x:Name="DogsBreed"  
+                                 
+                            Placeholder="Breed" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="30"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       Scale="0.96">
+
+                    <Entry   x:Name="DogsAge"  
+                                 
+                            Placeholder="Age" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="30"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       Scale="0.96">
+
+                    <Entry   x:Name="DogsGender"  
+                                 
+                            Placeholder="Gender" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame
+                       Padding="0"
+                       CornerRadius="30"
+                       IsClippedToBounds="True"
+                       BorderColor="Black"
+                       Scale="0.96">
+
+                    <Entry   x:Name="DogBio"  
+                                 
+                            Placeholder="Bio" 
+                            PlaceholderColor="Black"
+                            TextColor="Black"                                                          
+                            BackgroundColor="#f2f2f2"
+                            FontSize="Subtitle"  >
+                        <Entry.Effects>
+                            <effects:PlainEntry/>
+                        </Entry.Effects>
+                    </Entry>
+
+                </Frame>
+
+                <Frame>
+                    <Button x:Name="PhotoPicker" Text="Choose a photo"
+                            BackgroundColor="Wheat"
+                            TextColor="white"
+                            Clicked="PhotoPicker_Clicked"
+                            >
+                        
+                    </Button>
+                </Frame>
+              
+                <StackLayout Margin="75,20" VerticalOptions="Center" Spacing="4">
+                    <Button x:Name="RegButton" Text="Create account" 
+                            HeightRequest="50"
+                    Clicked="RegButton_Clicked"
+                    BackgroundColor="Gainsboro"
+                    TextColor="Black"   
+                    CornerRadius="15"
+                    IsEnabled="False" >
+                        <Button.Triggers>
+                            <MultiTrigger TargetType="Button">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding Source={x:Reference DogsName},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                    <BindingCondition Binding="{Binding Source={x:Reference DogsBreed},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                    <BindingCondition Binding="{Binding Source={x:Reference DogsAge},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                    <BindingCondition Binding="{Binding Source={x:Reference DogsGender},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                    <BindingCondition Binding="{Binding Source={x:Reference DogBio},
+                                    Path=Text.Length,Converter={StaticResource dataHasBeenEntered}}"                                  
+                                    Value="true" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True" />
+                                <!-- multiple Setter elements are allowed -->
+                            </MultiTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+        <!--   </Grid> -->
+    </ContentPage.Content>
+</ContentPage>
+    
+    

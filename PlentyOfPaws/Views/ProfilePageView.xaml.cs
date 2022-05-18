@@ -19,11 +19,10 @@ namespace PlentyOfPaws.Views
 
         }
 
-        private async void GoToAddDogPage(object sender, EventArgs e)
+        private async void AddDogPage(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//login/Dogregistration");
+            await Shell.Current.GoToAsync("RegisterDog");
            
-        }
-        
+        }        
     }
 }

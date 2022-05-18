@@ -7,30 +7,65 @@ using Xamarin.Forms;
 
 namespace PlentyOfPaws.Models
 {
-    public class IFilePicker
+    public static class IFilePicker
     {
-        public async void PickMultipleFiles()
+        public static async void PickMultipleFiles()
         {
-            var pickResult = await FilePicker.PickMultipleAsync(new PickOptions
+            var file = await FilePicker.PickAsync(new PickOptions
             {
                 FileTypes = FilePickerFileType.Images,
                 PickerTitle = "Pick Images"
             });
 
-            if (pickResult != null)
+            System.IO.File.ReadAllBytes(file.ToString());
+           // var ImageData = file;
+         //   Console.WriteLine(file.FullPath);
+            //var pickResult = await FilePicker.PickMultipleAsync(new PickOptions
+            //{
+            //    FileTypes = FilePickerFileType.Images,
+            //    PickerTitle = "Pick Images"
+            //});
+
+            //if (pickResult != null)
+            //{
+            //    var imagelist = new List<ImageSource>();
+
+            //    foreach (var item in pickResult)
+            //    {
+            //        var stream = await item.OpenReadAsync();
+
+            //        imagelist.Add(ImageSource.FromStream(() => stream));
+            //        Console.WriteLine(imagelist.Count); ;
+
+        }
+
+        public static async Task<FileResult> PickAndShow(PickOptions options)
+        {
+            try
             {
-                var imagelist = new List<ImageSource>();
-
-                foreach (var item in pickResult)
+                var result = await FilePicker.PickAsync(options);
+                if (result != null)
                 {
-                    var stream = await item.OpenReadAsync();
-
-                    imagelist.Add(ImageSource.FromStream(() => stream));
-                    Console.WriteLine(imagelist.Count); ;
-                    
+                    var Text = $"File Name: {result.FileName}";
+                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
+                        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var stream = await result.OpenReadAsync();
+                        Console.WriteLine(stream);
+                        var image = ImageSource.FromStream(() => stream);
+                    }
                 }
+              
+                return result;
             }
+            catch (Exception ex)
+            {
+                // The user canceled or something went wrong
+            }
+
+            return null;
         }
     }
-}
+  }
+    
 

@@ -11,8 +11,8 @@ namespace PlentyOfPaws.Services
 
         private static string passwsd = "root";
 
-       // private static string server = "172.17.224.1";
-        private static string server = "172.25.65.204";
+        private static string server = "172.17.224.1";
+       // private static string server = "172.25.65.204";
 
         //Connection info
         // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 

@@ -13,14 +13,11 @@ namespace PlentyOfPaws
             InitializeComponent();
 
             Routing.RegisterRoute("registration", typeof(RegistrationModal));
-
-            Routing.RegisterRoute("Dogregistration", typeof(AddDog));
-
+            Routing.RegisterRoute("RegisterDog", typeof(RegisterDog));
         }
     }
 
     public class HiddenItem : ShellItem
     {
-
     }
 }
