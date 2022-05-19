@@ -35,10 +35,8 @@ namespace PlentyOfPaws.Views
 
         private void PhotoPicker_Clicked(object sender, EventArgs e)
         {
-            //  IFilePicker.PickMultipleFiles();
-            // var ImageStream = IFilePicker.PickAndShow(PickOptions.Images);
-            // var g = IFilePicker.GetPhotoAsByteArray(ImageStream);
-          //  DogImage = IFilePicker.GetImageStreamAsBytes();
+            IFilePicker.PickAndShow(PickOptions.Images);
+            DogImage = IFilePicker.GetPhoto();
         }
 
         private void DogsName_TextChanged(object sender, TextChangedEventArgs e)
