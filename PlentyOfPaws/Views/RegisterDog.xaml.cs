@@ -2,6 +2,7 @@
 using PlentyOfPaws.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,14 +30,18 @@ namespace PlentyOfPaws.Views
 
         private async void RegButton_Clicked(object sender, EventArgs e)
         {
-            db.RegisterDog(User.ActiveUsers[0].UserID ,Dogname, Breed, Age, Gender, Bio, DogImage);
+            db.RegisterDog(User.ActiveUsers[0].UserID ,Dogname, Breed, Age, Gender, Bio, IFilePicker.bytearray);
             await Shell.Current.GoToAsync("..");
+
+           // IFilePicker.bytearray.GetLength(0);
         }
 
         private void PhotoPicker_Clicked(object sender, EventArgs e)
         {
             IFilePicker.PickAndShow(PickOptions.Images);
-            DogImage = IFilePicker.GetPhoto();
+           
+           // DogImage = IFilePicker.GetPhoto();
+           
         }
 
         private void DogsName_TextChanged(object sender, TextChangedEventArgs e)

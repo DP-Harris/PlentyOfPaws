@@ -11,7 +11,7 @@ namespace PlentyOfPaws.Models
 {
     public static class IFilePicker
     {
-        private static byte[] bytearray;
+        public static byte[] bytearray;
         public static async void PickAndShow(PickOptions options)
         {
             try

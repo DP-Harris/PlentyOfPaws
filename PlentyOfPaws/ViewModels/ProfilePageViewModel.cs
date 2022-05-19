@@ -1,5 +1,6 @@
 ﻿using PlentyOfPaws.Models;
 using System;
+using System.IO;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -36,6 +37,8 @@ namespace PlentyOfPaws.ViewModels
          public string Username { get; } = User.ActiveUsers[0].UserName;
          public string Email { get; } = User.ActiveUsers[0].UserEmail;    
          public string Location { get; } = User.ActiveUsers[0].UserLocation;
+
+         
 
 
         public ICommand OpenWebCommand { get; }

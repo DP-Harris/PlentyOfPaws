@@ -119,12 +119,20 @@ namespace PlentyOfPaws.Services
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
 
             // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
-            query = $"INSERT INTO `tbl_dog` (`UserID`, `DogName`, `BreedOne`, `BreedTwo`, `Age`, `Gender`, `ImageOne`, `ImageTwo`, `ImageThree`, `ImageFour`, `ImageFive`, `Bio`) VALUES ('{userid}', '{dogname}', '{breed}', NULL, '{age}', '{gender}', '{img}', 'NULL', 'NULL', 'NULL', 'NULL', '{bio}') ";
+            query = $"INSERT INTO `tbl_dog` (`UserID`, `DogName`, `BreedOne`, `BreedTwo`, `Age`, `Gender`, `ImageOne`, `ImageTwo`, `ImageThree`, `ImageFour`, `ImageFive`, `Bio`) VALUES (@UserID, @DogName, @BreedOne, NULL, @Age, @Gender, @ImageOne, 'NULL', 'NULL', 'NULL', 'NULL', @Bio)\n";
 
             dbConnect.Open();
 
             //Runs query
             MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+            commanddb.Parameters.Add("@UserID", MySqlDbType.Int64).Value = userid;
+            commanddb.Parameters.Add("@DogName", MySqlDbType.VarChar).Value = dogname;
+            commanddb.Parameters.Add("@BreedOne", MySqlDbType.VarChar).Value = breed;
+            commanddb.Parameters.Add("@age", MySqlDbType.Int64).Value = age;
+            commanddb.Parameters.Add("@gender", MySqlDbType.VarChar).Value = gender;
+            commanddb.Parameters.Add("@bio", MySqlDbType.VarChar).Value = bio;
+            commanddb.Parameters.Add("@ImageOne", MySqlDbType.Blob).Value = img;
+           // Command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Password;
 
             commanddb.ExecuteNonQuery();
 
