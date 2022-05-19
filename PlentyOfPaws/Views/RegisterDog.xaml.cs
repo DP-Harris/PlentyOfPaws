@@ -61,7 +61,7 @@ namespace PlentyOfPaws.Views
 
         private void DogsGender_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Gender = e.NewTextValue;
+            Gender = e.NewTextValue;            
         }
 
         private void DogBio_TextChanged(object sender, TextChangedEventArgs e)

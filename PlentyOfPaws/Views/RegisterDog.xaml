@@ -113,7 +113,7 @@
 
                     <Entry   x:Name="DogsGender"  
                                  
-                            Placeholder="Gender" 
+                            Placeholder="Gender: Male or Female" 
                             PlaceholderColor="Black"
                             TextColor="Black"  
                              TextChanged="DogsGender_TextChanged"
