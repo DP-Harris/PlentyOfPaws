@@ -15,19 +15,14 @@ namespace PlentyOfPaws.Models
         public static async void PickAndShow(PickOptions options)
         {
             try
-            {
-                // Define byte array named Blob
-                byte[] Blob = new byte[0];
+            { 
                 var result = await FilePicker.PickAsync(options);
                 if (result != null)
-                {
-                    var Text = $"File Name: {result.FileName}";
-                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-                    result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
+                {             
                     {
                         var stream = await result.OpenReadAsync();
-                        Console.WriteLine(stream);
-                        var image = ImageSource.FromStream(() => stream);
+                       // Console.WriteLine(stream);
+                       // var image = ImageSource.FromStream(() => stream);
 
 
 
@@ -36,18 +31,14 @@ namespace PlentyOfPaws.Models
                         using (MemoryStream ms = new MemoryStream())
                         {
                             stream.CopyTo(ms);
-                            Blob = ms.ToArray();
+                            bytearray = ms.ToArray();
+                       
+
                             ms.Dispose();
                         }
-                        // Return the byte array
-                        bytearray = Blob;
+
                     }
                 }
-
-
-
-                // Return the byte array
-                bytearray = Blob;
             }
             catch (Exception ex)
             {
