@@ -11,7 +11,7 @@ namespace PlentyOfPaws.Services
 
         private static string passwsd = "root";
 
-        private static string server = "172.17.224.1";
+        private static string server = "172.23.112.1";
        // private static string server = "172.25.65.204";
 
         //Connection info
@@ -110,6 +110,26 @@ namespace PlentyOfPaws.Services
 
                 CurrentUser.AddtoList(CurrentUser);
             }
+        }
+
+        public void RegisterDog(int userid, string dogname, string breed, int age, string gender, string bio, byte[] img)
+        {
+
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
+            query = $"INSERT INTO `tbl_dog` (`UserID`, `DogName`, `BreedOne`, `BreedTwo`, `Age`, `Gender`, `ImageOne`, `ImageTwo`, `ImageThree`, `ImageFour`, `ImageFive`, `Bio`) VALUES ('{userid}', '{dogname}', '{breed}', NULL, '{age}', '{gender}', '{img}', 'NULL', 'NULL', 'NULL', 'NULL', '{bio}') ";
+
+            dbConnect.Open();
+
+            //Runs query
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            commanddb.ExecuteNonQuery();
+
+            dbConnect.Close();
+
         }
     }
 }

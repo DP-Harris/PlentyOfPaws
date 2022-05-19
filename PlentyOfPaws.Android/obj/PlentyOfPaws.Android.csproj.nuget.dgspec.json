@@ -110,6 +110,14 @@
               "target": "Package",
               "version": "[4.8.3, )"
             },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Drawing.Primitives": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.7.1, )"

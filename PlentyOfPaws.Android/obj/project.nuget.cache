@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VcYXNm8sCNxw6AeliELOPnuIb/E7N781iuvqbQuihVkVEMdH/gXPrbAWCabvFXdJ2UQ1fdBqPjC0KknVIoWsYA==",
+  "dgSpecHash": "OP0ZMHHevzLsHnfUybFjkP/GaCsMfQr/kXsly0DuFzyWMGPbezKmnv7+fG9yS7kXTqPnf1O0W3IMD7HYpRxrcg==",
   "success": true,
   "projectFilePath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.Android\\PlentyOfPaws.Android.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,8 @@
     "C:\\Users\\cocknose\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
+    "C:\\Users\\cocknose\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\cocknose\\.nuget\\packages\\system.drawing.primitives\\4.3.0\\system.drawing.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
