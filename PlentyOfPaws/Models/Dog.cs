@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 //System.Drawing.Image:
 
 namespace PlentyOfPaws.Models
@@ -18,6 +19,7 @@ namespace PlentyOfPaws.Models
         public string Gender { get; set; }
         public string Bio { get; set; }
         public Stream DogImage { get; set; }
+        public ImageSource Photo { get; set; }
 
     }
 }

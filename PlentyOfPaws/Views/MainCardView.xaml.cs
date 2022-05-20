@@ -17,45 +17,37 @@ namespace PlentyOfPaws.Views
     public partial class MainCardView : ContentPage
     {
         DataBaseConnection db = new DataBaseConnection();
-        public ObservableCollection<UserProfile> _profile = new ObservableCollection<UserProfile>();
+        public ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
         public MainCardView()
         {
             InitializeComponent();
             GetDogs();
-            CardBinding();
+            //CardBinding();
             BindingContext = this;
         }
 
-        public void CardBinding()
-        {
-            Profiles.Add(new UserProfile() { Name = "Anil", Age = 22, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "Greg", Age = 18, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "James", Age = 31, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "Andy", Age = 26, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "Carol", Age = 77, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "Sppon", Age = 32, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "CPU", Age = 18, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "James", Age = 62, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "Dan", Age = 42, Photo = "testdog.jpg" });
-            //Profiles.Add(new UserProfile() { Name = "MRHUM", Age = 34, Photo = "testdog.jpg" });
+        //public void CardBinding()
+        //{
+        //    _dogs.Add(new Dog() { DogName = "Anil", Age = 22, BreedOne = "Collie", Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "Greg", Age = 18, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "James", Age = 31, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "Andy", Age = 26, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "Carol", Age = 77, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "Sppon", Age = 32, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "CPU", Age = 18, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "James", Age = 62, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "Dan", Age = 42, Photo = "testdog.jpg" });
+        //    //Profiles.Add(new UserProfile() { Name = "MRHUM", Age = 34, Photo = "testdog.jpg" });
 
-        }
+        //}
 
-        public ObservableCollection<UserProfile> Profiles
+        public ObservableCollection<Dog> DogProfiles
         {
-            get => _profile;
+            get => _dogs;
             set
             {
-                _profile = value;
+                _dogs = value;
             }
-        }
-
-        public class UserProfile
-        {
-            public string Name { get; set; }
-            public int Age { get; set; }
-            public ImageSource Photo { get; set; }
-
         }
 
         private void GetDogs()
@@ -64,19 +56,11 @@ namespace PlentyOfPaws.Views
             dogs = db.GetAllDogs();
             foreach (var d in dogs)
             {
-                //Console.WriteLine(d.UserID.ToString());
-                //Console.WriteLine(d.DogName);
-                //Console.WriteLine(d.BreedOne);
-                //Console.WriteLine(d.Gender);
-                //Console.WriteLine(d.Age);
-                //Console.WriteLine(d.Bio);
-
-
-
-                Profiles.Add(new UserProfile() { Name = d.DogName, Age = d.Age, Photo = ImageSource.FromStream(() => new MemoryStream(converttoblob(d.DogImage))) });
-
-               //Console.WriteLine(converttoblob(d.DogImage).Length);
-               ImageSource img = ImageSource.FromStream(() => new MemoryStream(converttoblob(d.DogImage)));
+                // if dogs id where user id == user id dog.gender is female 
+                // Remove femals from list 
+                // else add males to the list 
+                
+                _dogs.Add(new Dog() { DogName = d.DogName, Age = d.Age, BreedOne = d.BreedOne, Photo = ImageSource.FromStream(() => new MemoryStream(converttoblob(d.DogImage))) });
             }
         }
 
@@ -96,13 +80,13 @@ namespace PlentyOfPaws.Views
         private void nopeButton_Clicked(object sender, EventArgs e)
         {
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
-            
+            Console.WriteLine("Rejected");
         }
 
         private void likeButton_Clicked(object sender, EventArgs e)
         {
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
-          
+            Console.WriteLine("Matched");
         }
     }
 }
