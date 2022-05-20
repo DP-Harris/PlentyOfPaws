@@ -15,14 +15,14 @@ namespace PlentyOfPaws.Models
         public static async void PickAndShow(PickOptions options)
         {
             try
-            { 
+            {
                 var result = await FilePicker.PickAsync(options);
                 if (result != null)
-                {             
+                {
                     {
                         var stream = await result.OpenReadAsync();
-                       // Console.WriteLine(stream);
-                       // var image = ImageSource.FromStream(() => stream);
+                        // Console.WriteLine(stream);
+                        // var image = ImageSource.FromStream(() => stream);
 
 
 
@@ -32,7 +32,7 @@ namespace PlentyOfPaws.Models
                         {
                             stream.CopyTo(ms);
                             bytearray = ms.ToArray();
-                       
+
 
                             ms.Dispose();
                         }
@@ -53,8 +53,12 @@ namespace PlentyOfPaws.Models
         {
             return bytearray;
         }
+
+
     }
 }
+
+
 
 
    

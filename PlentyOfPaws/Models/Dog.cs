@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Xamarin.Essentials;
 //System.Drawing.Image:
@@ -15,6 +16,8 @@ namespace PlentyOfPaws.Models
         public string BreedTwo { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
+        public string Bio { get; set; }
+        public Stream DogImage { get; set; }
 
     }
 }

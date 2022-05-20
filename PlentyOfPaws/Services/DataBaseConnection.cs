@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using MySqlConnector;
 using PlentyOfPaws.Models;
+using Xamarin.Forms;
 
 namespace PlentyOfPaws.Services
 {
@@ -131,12 +133,82 @@ namespace PlentyOfPaws.Services
             commanddb.Parameters.Add("@age", MySqlDbType.Int64).Value = age;
             commanddb.Parameters.Add("@gender", MySqlDbType.VarChar).Value = gender;
             commanddb.Parameters.Add("@bio", MySqlDbType.VarChar).Value = bio;
-            commanddb.Parameters.Add("@ImageOne", MySqlDbType.Blob).Value = img;
+            commanddb.Parameters.Add("@ImageOne", MySqlDbType.LongBlob).Value = img;
            // Command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Password;
 
             commanddb.ExecuteNonQuery();
 
             dbConnect.Close();
+
+        }
+
+        public List<Dog> GetAllDogs()
+        {
+            List<Dog> dogs = new List<Dog>();
+
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
+            query = "SELECT * FROM `tbl_dog`";
+
+            dbConnect.Open();
+
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Dog dog = new Dog();
+
+                    dog.UserID = int.Parse(reader["UserID"].ToString());
+                    dog.DogID = int.Parse(reader["DogID"].ToString());
+                    dog.DogName = reader["DogName"].ToString();
+                    dog.BreedOne = reader["BreedOne"].ToString();
+                    dog.Age = int.Parse(reader["age"].ToString());
+                    dog.Gender = reader["gender"].ToString();
+                    dog.Bio = reader["bio"].ToString();
+                    dog.DogImage = reader.GetStream(7);
+
+                  //  dog.DogImage = reader.GetBytes
+                  // dog.DogImage = ImageSource.FromStream(() => new MemoryStream(IFilePicker.converttoblob(reader.GetStream(7))));
+
+                    dogs.Add(dog);
+                }
+
+                dbConnect.Close();
+
+                return dogs;
+
+            }
+            else
+            {
+                return dogs;
+            }
+        }
+
+        public void GetChats()
+        {
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
+            query = "SELECT * FROM `tbl_match`";
+
+            dbConnect.Open();
+
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+            // get users id who is logged in 
+            // find all there matchs from the database 
+
+            // froms matches download there name and chats 
+
 
         }
     }
