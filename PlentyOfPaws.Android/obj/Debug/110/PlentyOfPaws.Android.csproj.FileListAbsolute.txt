@@ -1849,3 +1849,14 @@ C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws.Android\obj\Debug\110\stamp\_Ge
 C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
 E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\testdog.jpg
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp3.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp4.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp5.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp6.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp8.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp9.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp10.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp11.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp1.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\res\drawable\dp2.jfif
+E:\TSE\PlentyOfPaws\PlentyOfPaws.Android\obj\Debug\110\android\assets\MLToolkit.Forms.SwipeCardView.dll

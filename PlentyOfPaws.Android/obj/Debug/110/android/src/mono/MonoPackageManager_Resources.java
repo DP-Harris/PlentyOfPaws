@@ -9,6 +9,7 @@ public class MonoPackageManager_Resources {
 		"K4os.Compression.LZ4.dll",
 		"K4os.Compression.LZ4.Streams.dll",
 		"K4os.Hash.xxHash.dll",
+		"MLToolkit.Forms.SwipeCardView.dll",
 		"MySql.Data.dll",
 		"MySqlConnector.dll",
 		"PlentyOfPaws.dll",

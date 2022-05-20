@@ -44,6 +44,10 @@
       "frameworks": {
         "monoandroid11.0": {
           "dependencies": {
+            "MLToolkit.Forms.SwipeCardView": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.28, )"
@@ -102,6 +106,10 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "dependencies": {
+            "MLToolkit.Forms.SwipeCardView": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.1.8, )"

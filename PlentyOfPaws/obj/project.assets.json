@@ -45,6 +45,18 @@
           }
         }
       },
+      "MLToolkit.Forms.SwipeCardView/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.2.0.848062"
+        },
+        "compile": {
+          "lib/netstandard2.0/MLToolkit.Forms.SwipeCardView.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MLToolkit.Forms.SwipeCardView.dll": {}
+        }
+      },
       "MySqlConnector/2.1.8": {
         "type": "package",
         "dependencies": {
@@ -375,6 +387,18 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "MLToolkit.Forms.SwipeCardView/2.2.0": {
+      "sha512": "uX6KRUopRMy75jVuNH3Kyb38wFTCaVXJsURh7y4dtsYlLRhLImrf6sJPLAGUzyTtKlqpwMQQVLTH7WLWazqJ+w==",
+      "type": "package",
+      "path": "mltoolkit.forms.swipecardview/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MLToolkit.Forms.SwipeCardView.dll",
+        "mltoolkit.forms.swipecardview.2.2.0.nupkg.sha512",
+        "mltoolkit.forms.swipecardview.nuspec"
       ]
     },
     "MySqlConnector/2.1.8": {
@@ -1358,6 +1382,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
+      "MLToolkit.Forms.SwipeCardView >= 2.2.0",
       "MySqlConnector >= 2.1.8",
       "System.Data.SqlClient >= 4.8.3",
       "System.Drawing.Common >= 6.0.0",
@@ -1413,6 +1438,10 @@
       "netstandard2.1": {
         "targetAlias": "netstandard2.1",
         "dependencies": {
+          "MLToolkit.Forms.SwipeCardView": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
           "MySqlConnector": {
             "target": "Package",
             "version": "[2.1.8, )"

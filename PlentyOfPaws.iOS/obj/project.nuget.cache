@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0H2ahFnfyoE4NXm70pXMX2WOCIdXYR8mOy98a+iA7KY8eFtNlGwQQ2Tz27i+PT/ds4k3firZP0/UtFGwdbWhMw==",
+  "dgSpecHash": "N3Nwdyzl/+G8ODKUg81PhtMPN5WmduwC3jxuJggQvTjoD0butXsSpgQItFFF3n+3AV6GqxgOE9UdPd3UWzg5kw==",
   "success": true,
   "projectFilePath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\cocknose\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\k4os.compression.lz4.streams\\1.2.6\\k4os.compression.lz4.streams.1.2.6.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\cocknose\\.nuget\\packages\\mltoolkit.forms.swipecardview\\2.2.0\\mltoolkit.forms.swipecardview.2.2.0.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\mysql.data\\8.0.28\\mysql.data.8.0.28.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\mysqlconnector\\2.1.8\\mysqlconnector.2.1.8.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",

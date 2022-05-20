@@ -61,6 +61,18 @@
           "lib/netstandard2.0/K4os.Hash.xxHash.dll": {}
         }
       },
+      "MLToolkit.Forms.SwipeCardView/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.2.0.848062"
+        },
+        "compile": {
+          "lib/netstandard2.0/MLToolkit.Forms.SwipeCardView.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MLToolkit.Forms.SwipeCardView.dll": {}
+        }
+      },
       "MySql.Data/8.0.28": {
         "type": "package",
         "dependencies": {
@@ -1218,6 +1230,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "MLToolkit.Forms.SwipeCardView": "2.2.0",
           "MySqlConnector": "2.1.8",
           "System.Data.SqlClient": "4.8.3",
           "System.Drawing.Common": "6.0.0",
@@ -1337,6 +1350,18 @@
         "lib/netstandard1.6/K4os.Hash.xxHash.xml",
         "lib/netstandard2.0/K4os.Hash.xxHash.dll",
         "lib/netstandard2.0/K4os.Hash.xxHash.xml"
+      ]
+    },
+    "MLToolkit.Forms.SwipeCardView/2.2.0": {
+      "sha512": "uX6KRUopRMy75jVuNH3Kyb38wFTCaVXJsURh7y4dtsYlLRhLImrf6sJPLAGUzyTtKlqpwMQQVLTH7WLWazqJ+w==",
+      "type": "package",
+      "path": "mltoolkit.forms.swipecardview/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MLToolkit.Forms.SwipeCardView.dll",
+        "mltoolkit.forms.swipecardview.2.2.0.nupkg.sha512",
+        "mltoolkit.forms.swipecardview.nuspec"
       ]
     },
     "MySql.Data/8.0.28": {
@@ -3015,6 +3040,7 @@
   },
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v11.0": [
+      "MLToolkit.Forms.SwipeCardView >= 2.2.0",
       "MySql.Data >= 8.0.28",
       "PlentyOfPaws >= 1.0.0",
       "Xamarin.Essentials >= 1.6.1",
@@ -3066,6 +3092,10 @@
     "frameworks": {
       "monoandroid11.0": {
         "dependencies": {
+          "MLToolkit.Forms.SwipeCardView": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
           "MySql.Data": {
             "target": "Package",
             "version": "[8.0.28, )"

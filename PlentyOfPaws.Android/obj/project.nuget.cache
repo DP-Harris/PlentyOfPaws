@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OP0ZMHHevzLsHnfUybFjkP/GaCsMfQr/kXsly0DuFzyWMGPbezKmnv7+fG9yS7kXTqPnf1O0W3IMD7HYpRxrcg==",
+  "dgSpecHash": "Dq4z0+440BkTIXyqoRvsEc7w1b5cU4PTWi1yO3M2Eetk3urp1CBw2peJmLlDbmeVBfWubcjaN0h8sTv0OsyFNw==",
   "success": true,
   "projectFilePath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.Android\\PlentyOfPaws.Android.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\cocknose\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\k4os.compression.lz4.streams\\1.2.6\\k4os.compression.lz4.streams.1.2.6.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\cocknose\\.nuget\\packages\\mltoolkit.forms.swipecardview\\2.2.0\\mltoolkit.forms.swipecardview.2.2.0.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\mysql.data\\8.0.28\\mysql.data.8.0.28.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\mysqlconnector\\2.1.8\\mysqlconnector.2.1.8.nupkg.sha512",
     "C:\\Users\\cocknose\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",

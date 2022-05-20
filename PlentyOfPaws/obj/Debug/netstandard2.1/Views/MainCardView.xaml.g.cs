@@ -17,8 +17,12 @@ namespace PlentyOfPaws.Views {
     public partial class MainCardView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::MLToolkit.Forms.SwipeCardView.SwipeCardView SwipeView1;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainCardView));
+            SwipeView1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::MLToolkit.Forms.SwipeCardView.SwipeCardView>(this, "SwipeView1");
         }
     }
 }
