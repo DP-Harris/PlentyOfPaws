@@ -20,9 +20,17 @@ namespace PlentyOfPaws.Views {
         private global::MLToolkit.Forms.SwipeCardView.SwipeCardView SwipeView1;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button nopeButton;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button likeButton;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainCardView));
             SwipeView1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::MLToolkit.Forms.SwipeCardView.SwipeCardView>(this, "SwipeView1");
+            nopeButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "nopeButton");
+            likeButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "likeButton");
         }
     }
 }

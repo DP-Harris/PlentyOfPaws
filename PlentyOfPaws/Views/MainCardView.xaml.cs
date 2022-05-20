@@ -52,5 +52,15 @@ namespace PlentyOfPaws.Views
             public string Photo { get; set; }
 
         }
+
+        private void nopeButton_Clicked(object sender, EventArgs e)
+        {
+            SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
+        }
+
+        private void likeButton_Clicked(object sender, EventArgs e)
+        {
+            SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
+        }
     }
 }

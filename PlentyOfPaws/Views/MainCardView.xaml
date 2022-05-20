@@ -14,15 +14,38 @@
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Frame CornerRadius="10" Padding="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <AbsoluteLayout>
-                                    <Image Source="{Binding Photo}" Aspect="AspectFill" AbsoluteLayout.LayoutBounds=".5,0.5,1,1" AbsoluteLayout.LayoutFlags="All"></Image>
+                                    <Image Source="{Binding Photo}" Aspect="AspectFill" AbsoluteLayout.LayoutBounds=".5,0.5,1,1" AbsoluteLayout.LayoutFlags="All">
+                                        
+                                    </Image>
+                                    <Label FontSize="Large" FontAttributes="Bold" TextColor="White" 
+                                           AbsoluteLayout.LayoutBounds="0.1,0.95,150,30" AbsoluteLayout.LayoutFlags="PositionProportional" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Name}"></Span>
+                                                <Span Text=","></Span>
+                                                <Span Text="{Binding Age}"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </AbsoluteLayout>
                             </Frame>
                             
                         </StackLayout>
                     </DataTemplate>
+                    
                 </swipeCardView:SwipeCardView.ItemTemplate>
                 
             </swipeCardView:SwipeCardView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10,10,10,20" Spacing="30">
+                <StackLayout>
+                    <Button x:Name="nopeButton" ImageSource="TDRS.png" Clicked="nopeButton_Clicked"
+                            WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="White" Scale="0.8"></Button>
+                 </StackLayout>
+                <StackLayout VerticalOptions="Center">
+                    <Button x:Name="likeButton" ImageSource="TLRS.png" Clicked="likeButton_Clicked"
+                            WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="White" Scale="0.8"></Button>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
