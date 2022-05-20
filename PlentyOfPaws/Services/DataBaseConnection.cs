@@ -190,6 +190,25 @@ namespace PlentyOfPaws.Services
             }
         }
 
+        //public string GetGender()
+        //{
+        //    string gender;
+        //    Connects to DB
+        //    MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+        //    string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
+        //    query = $"SELECT Gender FROM `tbl_dog` WHERE UserID = '{User.ActiveUsers[0].UserID}';";
+
+        //    dbConnect.Open();
+
+        //    MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+        //    MySqlDataReader reader = commanddb.ExecuteReader();
+        //    dbConnect.Close();
+        //    gender = reader["Gender"].ToString();
+        //    return gender;
+        //}
+
         public void GetChats()
         {
             //Connects to DB

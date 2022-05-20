@@ -54,13 +54,53 @@ namespace PlentyOfPaws.Views
         {
             List<Dog> dogs = new List<Dog>();
             dogs = db.GetAllDogs();
+
+            //GetDogsGender(dogs); 
+            
+            //RemoveOppisiteGender(dogs);
+            //RemoveUsersDog(dogs);
+
             foreach (var d in dogs)
-            {
-                // if dogs id where user id == user id dog.gender is female 
-                // Remove femals from list 
-                // else add males to the list 
-                
+            {          
                 _dogs.Add(new Dog() { DogName = d.DogName, Age = d.Age, BreedOne = d.BreedOne, Photo = ImageSource.FromStream(() => new MemoryStream(converttoblob(d.DogImage))) });
+            }
+        }
+
+        private void RemoveUsersDog(List<Dog> dogs)
+        {
+            for (int i = 0; i < dogs.Count(); i++)
+            {
+                if (dogs[i].UserID == User.ActiveUsers[0].UserID)
+                {
+                    dogs.RemoveAt(i);
+                }
+
+            }
+        }
+
+        private string GetDogsGender(List<Dog> dogs)
+        {
+            
+            for (int i = 0; i < dogs.Count(); i++)
+            {
+                if (dogs[i].UserID == User.ActiveUsers[0].UserID)
+                {
+                    return dogs[i].Gender;  
+                }
+            }
+
+            return null;
+           
+        }
+
+        private void RemoveOppisiteGender(List<Dog> dogs)
+        {
+            for (int i = 0; i < dogs.Count(); i++)
+            {
+                if (dogs[i].Gender != GetDogsGender(dogs).ToLower())
+                {
+                    dogs.RemoveAt(i);
+                }
             }
         }
 
