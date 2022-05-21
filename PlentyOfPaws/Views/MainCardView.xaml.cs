@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,31 +13,21 @@ namespace PlentyOfPaws.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainCardView : ContentPage
     {
+        // Allows access to database methods. 
         DataBaseConnection db = new DataBaseConnection();
+
+        // Creates a list that is can be binded to XAML binding. 
         public ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
+
+        // Initiates view for this page.
         public MainCardView()
         {
             InitializeComponent();
-            GetDogs();
-            //CardBinding();
+            loadAllDogs();
             BindingContext = this;
         }
 
-        //public void CardBinding()
-        //{
-        //    _dogs.Add(new Dog() { DogName = "Anil", Age = 22, BreedOne = "Collie", Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "Greg", Age = 18, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "James", Age = 31, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "Andy", Age = 26, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "Carol", Age = 77, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "Sppon", Age = 32, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "CPU", Age = 18, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "James", Age = 62, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "Dan", Age = 42, Photo = "testdog.jpg" });
-        //    //Profiles.Add(new UserProfile() { Name = "MRHUM", Age = 34, Photo = "testdog.jpg" });
-
-        //}
-
+        // Lets the dogs in the  ObservableCollectio to a dog profiles that will be used on the display cards in the MainCardView.XAML swipe card model. 
         public ObservableCollection<Dog> DogProfiles
         {
             get => _dogs;
@@ -50,60 +37,57 @@ namespace PlentyOfPaws.Views
             }
         }
 
+        // Gets dogs creates a new list of dogs
+        // Populates that dog list from the database of tbl_dog, finds the users dogs gender and removes all the same gender types from the collection.
+        // after we have the opposite gender creates new Observable objects of the remaining dogs setting properties for data binding in the XAML page.
         private void GetDogs()
         {
             List<Dog> dogs = new List<Dog>();
+
             dogs = db.GetAllDogs();
 
-            //GetDogsGender(dogs); 
-            
-            //RemoveOppisiteGender(dogs);
-            //RemoveUsersDog(dogs);
+            string userdogsGender = getUsersDogGender(dogs).ToLower();
 
-            foreach (var d in dogs)
-            {          
-                _dogs.Add(new Dog() { DogName = d.DogName, Age = d.Age, BreedOne = d.BreedOne, Photo = ImageSource.FromStream(() => new MemoryStream(converttoblob(d.DogImage))) });
+            foreach (Dog dog in dogs)
+            {        
+                if (dog.Gender.ToLower() != userdogsGender)
+                {
+                    _dogs.Add(new Dog() { DogName = dog.DogName, Age = dog.Age, BreedOne = dog.BreedOne, Photo = ImageSource.FromStream(() => new MemoryStream(converttoblob(dog.DogImage))) });
+                } 
+            }    
+        }
+
+
+      
+        // If user has no dogs he cant be matched so no dogs will be will
+        // will be redirected to the registerDog page to create a dog. 
+        private async void loadAllDogs()
+        {
+            if (db.UserHasDog() == true)
+            {
+                GetDogs();
+            }
+            else
+            {
+                await Shell.Current.GoToAsync("RegisterDog");
             }
         }
 
-        private void RemoveUsersDog(List<Dog> dogs)
+        // Finds the gender of the logged in users dog.
+        private string getUsersDogGender(List<Dog> dogs)
         {
             for (int i = 0; i < dogs.Count(); i++)
             {
                 if (dogs[i].UserID == User.ActiveUsers[0].UserID)
                 {
-                    dogs.RemoveAt(i);
-                }
-
-            }
-        }
-
-        private string GetDogsGender(List<Dog> dogs)
-        {
-            
-            for (int i = 0; i < dogs.Count(); i++)
-            {
-                if (dogs[i].UserID == User.ActiveUsers[0].UserID)
-                {
-                    return dogs[i].Gender;  
+                    return dogs[i].Gender;
                 }
             }
 
             return null;
-           
         }
 
-        private void RemoveOppisiteGender(List<Dog> dogs)
-        {
-            for (int i = 0; i < dogs.Count(); i++)
-            {
-                if (dogs[i].Gender != GetDogsGender(dogs).ToLower())
-                {
-                    dogs.RemoveAt(i);
-                }
-            }
-        }
-
+        // Converts a data stream into a byte[] to be sent to a image source so photos from blob storage can be displayed. 
         private byte[] converttoblob(Stream stream)
         {
             var bytearray = new byte[stream.Length];
@@ -117,12 +101,14 @@ namespace PlentyOfPaws.Views
             return bytearray;
         }
 
+        // On no click button will swipe card away and populate matching criteria. 
         private void nopeButton_Clicked(object sender, EventArgs e)
         {
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
             Console.WriteLine("Rejected");
         }
 
+        // On like button clicked will swipe away card in the correct direction and populate matching criteria
         private void likeButton_Clicked(object sender, EventArgs e)
         {
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);

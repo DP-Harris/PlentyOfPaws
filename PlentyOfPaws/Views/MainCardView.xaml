@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <swipeCardView:SwipeCardView x:Name="SwipeView1" ItemsSource="{Binding DogProfiles}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                         Padding="10" SupportedSwipeDirections="Left,Right,Up"
+                                         Padding="10" SupportedSwipeDirections="Right,Left"
                                          >
                 <swipeCardView:SwipeCardView.ItemTemplate>
                     <DataTemplate>

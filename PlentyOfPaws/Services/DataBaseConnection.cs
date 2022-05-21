@@ -14,7 +14,7 @@ namespace PlentyOfPaws.Services
         private static string passwsd = "root";
 
         private static string server = "172.23.112.1";
-       // private static string server = "172.25.65.204";
+        // private static string server = "172.25.65.204";
 
         //Connection info
         // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
@@ -104,7 +104,7 @@ namespace PlentyOfPaws.Services
                     CurrentUser.UserName = reader["UserName"].ToString();
                     CurrentUser.UserEmail = email;
                     CurrentUser.UserLocation = reader["Location"].ToString();
-                    CurrentUser.UserID = int.Parse( reader["UserID"].ToString());
+                    CurrentUser.UserID = int.Parse(reader["UserID"].ToString());
 
                 }
 
@@ -134,7 +134,7 @@ namespace PlentyOfPaws.Services
             commanddb.Parameters.Add("@gender", MySqlDbType.VarChar).Value = gender;
             commanddb.Parameters.Add("@bio", MySqlDbType.VarChar).Value = bio;
             commanddb.Parameters.Add("@ImageOne", MySqlDbType.LongBlob).Value = img;
-           // Command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Password;
+            // Command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Password;
 
             commanddb.ExecuteNonQuery();
 
@@ -173,8 +173,8 @@ namespace PlentyOfPaws.Services
                     dog.Bio = reader["bio"].ToString();
                     dog.DogImage = reader.GetStream(7);
 
-                  //  dog.DogImage = reader.GetBytes
-                  // dog.DogImage = ImageSource.FromStream(() => new MemoryStream(IFilePicker.converttoblob(reader.GetStream(7))));
+                    //  dog.DogImage = reader.GetBytes
+                    // dog.DogImage = ImageSource.FromStream(() => new MemoryStream(IFilePicker.converttoblob(reader.GetStream(7))));
 
                     dogs.Add(dog);
                 }
@@ -193,10 +193,10 @@ namespace PlentyOfPaws.Services
         //public string GetGender()
         //{
         //    string gender;
-        //    Connects to DB
+        //    //   Connects to DB
         //    MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
 
-        //    string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
+        //    // Query to find the dogs gender from the database tables. 
         //    query = $"SELECT Gender FROM `tbl_dog` WHERE UserID = '{User.ActiveUsers[0].UserID}';";
 
         //    dbConnect.Open();
@@ -204,31 +204,77 @@ namespace PlentyOfPaws.Services
         //    MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
 
         //    MySqlDataReader reader = commanddb.ExecuteReader();
-        //    dbConnect.Close();
+
         //    gender = reader["Gender"].ToString();
+
+        //    reader.Close();
+
+        //    dbConnect.Close();
+
+   
         //    return gender;
         //}
 
-        public void GetChats()
+        // Checks to make sure user has a dog register on the database
+        public bool UserHasDog()
         {
-            //Connects to DB
+            // Opens SQL Connection. 
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
 
-            // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
-            query = "SELECT * FROM `tbl_match`";
+            // Query passed to the database should return rows if a dog is present. 
+            query = $"SELECT* FROM tbl_dog WHERE UserID = '{User.ActiveUsers[0].UserID}';";
 
+            // Opens Database connection
             dbConnect.Open();
 
+            // Runs Query into the DB.
             MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
 
+            // Executes the Query.
             MySqlDataReader reader = commanddb.ExecuteReader();
 
-            // get users id who is logged in 
-            // find all there matchs from the database 
+            // If rows is > 0 a dog is present on the database and return true. 
+            if (reader.HasRows)
+            {
+                return true;
 
-            // froms matches download there name and chats 
+            }
+            else
+            {
+                // Always close reader
+                reader.Close();
+            }
 
+            // make sure reader is closed and db is closed 
+            reader.Close();
+            // Closes the connection to the database. 
+            dbConnect.Close();
 
+            // No matches was found so we can return false to fail validation of the login attempt 
+            return false;
         }
     }
 }
+
+        //public void GetChats()
+        //{
+        //    //Connects to DB
+        //    MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+        //    // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
+        //    query = "SELECT * FROM `tbl_match`";
+
+        //    dbConnect.Open();
+
+        //    MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+        //    MySqlDataReader reader = commanddb.ExecuteReader();
+
+        //    // get users id who is logged in 
+        //    // find all there matchs from the database 
+
+        //    // froms matches download there name and chats 
+
+
+        //}
+    
