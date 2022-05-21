@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 namespace PlentyOfPaws.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    // MainCard View is the backend datasorting and methods needed to present data inside the MainCardView.
     public partial class MainCardView : ContentPage
     {
         // Allows access to database methods. 
@@ -21,6 +22,7 @@ namespace PlentyOfPaws.Views
         // Creates a list that is can be binded to XAML binding. 
         public ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
 
+        // List to hold dogs needed for infomation and filtering before been sent to display dog list.
         public static List<Dog> dogs = new List<Dog>();
 
         // Initiates view for this page.
@@ -50,11 +52,13 @@ namespace PlentyOfPaws.Views
         // after we have the opposite gender creates new Observable objects of the remaining dogs setting properties for data binding in the XAML page.
         private void GetDogs()
         {
-            
+            // Retrieves all Dogs inside the database.
             dogs = db.GetAllDogs();
 
+            // Removes dogs of the same gender as users dog from the list.
             string userdogsGender = getUsersDogGender(dogs).ToLower();
 
+            // Populates a ObservableCollection of dogs in order to display them dynamically in databinding. 
             foreach (Dog dog in dogs)
             {        
                 if (dog.Gender.ToLower() != userdogsGender)
@@ -108,6 +112,7 @@ namespace PlentyOfPaws.Views
             return bytearray;
         }
 
+        // Iterates though the dog lists to find the dog ID belonging to the logged in user.
         private int FindCurrentDogID(List<Dog> dogs)
         {
             for (int i = 0; i < dogs.Count(); i++)
@@ -121,37 +126,37 @@ namespace PlentyOfPaws.Views
             return 0;
         }
 
+        // Setting dog as topitem in order to access it from the dynamic data binding in the MainCard View.
         private Dog _topItem;
 
+        // Sets topcards = to value so we can access the data from the topcard(dog) objects for matching purposes. 
         public Dog TopItem
         {
             get => _topItem;
             set
             {
                 _topItem = value;
-            //    RaisePropertyChanged();
             }
         }
-
-        private int i;
 
         // On no click button will swipe card away and populate matching criteria. 
         private void nopeButton_Clicked(object sender, EventArgs e)
         {
+            // Swipe view will direct visible card to the left indicating no match wanted 
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
-            Console.WriteLine("Rejected");
 
             // Send Reject query here. 
+            // Needs to be implemented to stop users matching with the same dog, causeing database key errors.
         }
 
         
         // On like button clicked will swipe away card in the correct direction and populate matching criteria
         private void likeButton_Clicked(object sender, EventArgs e)
         {
+            // SwipeView is moved as card shifts to the right. 
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
-            Console.WriteLine("Matched");
 
-            //  var dog = TopItem.DogID;
+            // Sends Current users ID, Current DogID and the dog the user swiped on into the Database.
             db.LogRightSwipes(User.ActiveUsers[0].UserID, FindCurrentDogID(dogs), TopItem.DogID);
 
         }

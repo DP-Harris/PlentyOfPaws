@@ -3,22 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:effects="clr-namespace:PlentyOfPaws.Effects"
              x:Class="PlentyOfPaws.Views.RegisterDog">
     <ContentPage.Content> 
-       
-
-        <!--   <Grid>
-            <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
-                <BoxView.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="AliceBlue" Offset="0.3"/>
-                        <GradientStop Color="#FF4646" Offset="1.0" />
-                        <GradientStop Color="AliceBlue" Offset="1.0" />
-                        <GradientStop Color="#FF4646" Offset="0.7" />
-                    </LinearGradientBrush>
-                </BoxView.Background>
-
-            </BoxView> -->
-
-
         <StackLayout BackgroundColor="#222222">
 
             <StackLayout Margin=" 0,40">

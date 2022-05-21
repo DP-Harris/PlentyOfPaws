@@ -9,11 +9,11 @@
              Shell.PresentationMode="ModalAnimated"
              x:Class="PlentyOfPaws.Views.RegistrationModal">
 
-
+        <!-- Registration view page, hold needed elements and stying needing for displaying user registration boxs and enables users to sign up to accounts. -->
 
     <ContentPage.Content>
 
-
+            <!-- Grid and box view control the background colour gradient for the page display.-->
         <Grid>
             <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
                 <BoxView.Background>
@@ -32,7 +32,8 @@
             <!-- Adds information boxes on the registration page.-->
             <!-- Sets placeholder text for all entry's on the registration page and event handlers upon the text been changed to access the data entered -->
             <StackLayout Margin="25,200" VerticalOptions="CenterAndExpand" Spacing="17">
-
+                    
+                <!-- Frame hold certain visual positioning needed for displaying entry's-->
                 <Frame
                        Padding="0"
                        CornerRadius="30"
@@ -54,7 +55,8 @@
                     </Entry>
 
                 </Frame>
-
+                
+                <!-- Frame hold certain visual positioning needed for displaying entry's-->
                 <Frame
                        Padding="0"
                        CornerRadius="50"
@@ -62,7 +64,7 @@
                        BorderColor="Black"
                        
                        Scale="0.96">
-
+                    <!-- Entry for user name, sets all needed attributes and x:name to use the data in the XAML.CS file behind -->
                     <Entry   x:Name="userName"
                                  
                             Placeholder="Name"
@@ -78,7 +80,8 @@
                     </Entry>
 
                 </Frame>
-
+                
+                <!-- Frame hold certain visual positioning needed for displaying entry's-->
                 <Frame
                        Padding="0"
                        CornerRadius="50"
@@ -87,6 +90,7 @@
                        
                        Scale="0.96">
 
+                    <!-- Entry for UserPassword , sets all needed attributes and x:name to use the data in the XAML.CS file behind -->
                     <Entry   x:Name="userPassword"
                                  
                              Placeholder="Password"
@@ -101,7 +105,8 @@
                     </Entry>
 
                 </Frame>
-
+                
+                <!-- Frame hold certain visual positioning needed for displaying entry's-->
                 <Frame
                        Padding="0"
                        CornerRadius="50"
@@ -109,7 +114,8 @@
                        BorderColor="Black"
                        
                        Scale="0.96">
-
+                    
+                    <!-- Entry for Location, sets all needed attributes and x:name to use the data in the XAML.CS file behind -->
                     <Entry   x:Name="confirmuserPassword"
                                  
                             Placeholder="Location" 
@@ -127,6 +133,7 @@
 
 
                 <!-- Register button design and click handler-->
+                <!-- Clickhandler uses a customer service found in services folder to make sure all fields have data before the button may be used -->
                 <StackLayout Margin="75,20" VerticalOptions="Center" Spacing="4">
                     <Button x:Name="RegButton" Text="Create account" 
                             HeightRequest="40"
@@ -157,7 +164,8 @@
                         </Button.Triggers>
                     </Button>
                 </StackLayout>
-
+                    
+                <!-- Label for display Terms and conditions information -->
                 <StackLayout Margin="10,10" VerticalOptions="CenterAndExpand" Spacing="1">
                     <Label Text="By clicking create account you are agreeing to our"
                            TextColor="Black"
@@ -166,6 +174,7 @@
                            >
 
                     </Label>
+                    <!-- Label for display Terms and conditions information -->
                     <Label Text="Terms and Conditions"
                            x:Name="TandCs"
                            TextColor="Black"
@@ -187,7 +196,8 @@
                 
             
             </StackLayout>
-
+                
+            <!-- Label and tap gesture for returning back to user login in screen. -->
             <StackLayout  Margin="10,10" VerticalOptions="EndAndExpand" Spacing="1">
                 <Label Text="Back to User Login"
                    x:Name="CancelBtn"

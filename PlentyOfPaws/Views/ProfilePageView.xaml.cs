@@ -15,10 +15,9 @@ namespace PlentyOfPaws.Views
         public ProfilePageView()
         {
             InitializeComponent();
-    
-
         }
 
+        // Sends users to the Register dog page upon clicking the add dog button. 
         private async void AddDogPage(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("RegisterDog");

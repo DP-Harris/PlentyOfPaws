@@ -10,12 +10,13 @@
             
         <StackLayout>
 
-            
+            <!-- swipeCardView sets the definition for displayed cards taking all dog related information from DogProfiles which is data-binded to collections in the back.cs page -->
             <swipeCardView:SwipeCardView x:Name="SwipeView1" ItemsSource="{Binding DogProfiles}" TopItem="{Binding TopItem}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                          Padding="10" SupportedSwipeDirections="Left,Right"
                                          >
                 <swipeCardView:SwipeCardView.ItemTemplate>
                     <DataTemplate>
+                        <!-- Within the data template we specify the bounds for the dog photos and information we want to present within labels and spans -->
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Frame CornerRadius="10" Padding="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <AbsoluteLayout>
@@ -31,7 +32,7 @@
                                                 <Span Text="{Binding Age}"></Span>
                                                 <Span Text=", "></Span>
                                                 <Span Text="{Binding BreedOne}"></Span>
-                                                <Span Text="{Binding DogID}"></Span>
+                                                <!-- <Span Text="{Binding DogID}"></Span> -->
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -45,7 +46,7 @@
 
             </swipeCardView:SwipeCardView>
 
-
+                <!-- A Stack Layout hold the buttons we use to control card movement, with all visual representations -->
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10,10,10,20" Spacing="30">
                 <StackLayout>
                     <Button x:Name="nopeButton" ImageSource="TDRS.png" Clicked="nopeButton_Clicked"
