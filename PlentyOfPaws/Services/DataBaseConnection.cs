@@ -252,6 +252,32 @@ namespace PlentyOfPaws.Services
 
             // No matches was found so we can return false to fail validation of the login attempt 
             return false;
+
+           
+        }
+
+        // Logs data in tbl_Swiperight to use for matching data later in the application, userid is the dogs owner, dog id is the current dog
+        // otherdogid represents the dog that was liked and current user swiped right on.
+        public void LogRightSwipes(int Userid, int Dogid, int OtherDogID)
+        {        
+                //Connects to DB
+                MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+                // Query to log a row into the MySQL database
+                query = $"INSERT INTO `tbl_swiperight` (`UserID`, `DogID`, `LikedDogID`) VALUES('{Userid}', '{Dogid}', '{OtherDogID}')";
+               
+
+                // Sets up the Query
+                MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+                // Opens Database
+                dbConnect.Open();
+                
+                // Runs the query 
+                commanddb.ExecuteNonQuery();
+                
+                // Closes the connection to the database. 
+                dbConnect.Close();
         }
     }
 }

@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:swipeCardView="clr-namespace:MLToolkit.Forms.SwipeCardView;assembly=MLToolkit.Forms.SwipeCardView"
+             xmlns:swipeCardView="clr-namespace:MLToolkit.Forms.SwipeCardView;assembly=MLToolkit.Forms.SwipeCardView" 
              Shell.NavBarIsVisible="False"
              x:Class="PlentyOfPaws.Views.MainCardView">
-    
+
+
     <ContentPage.Content>
+            
         <StackLayout>
-            <swipeCardView:SwipeCardView x:Name="SwipeView1" ItemsSource="{Binding DogProfiles}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                         Padding="10" SupportedSwipeDirections="Right,Left"
+
+            
+            <swipeCardView:SwipeCardView x:Name="SwipeView1" ItemsSource="{Binding DogProfiles}" TopItem="{Binding TopItem}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                         Padding="10" SupportedSwipeDirections="Left,Right"
                                          >
                 <swipeCardView:SwipeCardView.ItemTemplate>
                     <DataTemplate>
@@ -16,9 +20,9 @@
                             <Frame CornerRadius="10" Padding="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <AbsoluteLayout>
                                     <Image Source="{Binding Photo}" Aspect="AspectFill" AbsoluteLayout.LayoutBounds=".5,0.5,1,1" AbsoluteLayout.LayoutFlags="All">
-                                        
+
                                     </Image>
-                                    <Label FontSize="Large" FontAttributes="Bold" TextColor="White" 
+                                    <Label x:Name="dog" FontSize="Large" FontAttributes="Bold" TextColor="White" 
                                            AbsoluteLayout.LayoutBounds="0.1,0.95,300,30" AbsoluteLayout.LayoutFlags="PositionProportional" >
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -27,26 +31,31 @@
                                                 <Span Text="{Binding Age}"></Span>
                                                 <Span Text=", "></Span>
                                                 <Span Text="{Binding BreedOne}"></Span>
+                                                <Span Text="{Binding DogID}"></Span>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
                                 </AbsoluteLayout>
                             </Frame>
-                            
+
                         </StackLayout>
                     </DataTemplate>
-                    
+
                 </swipeCardView:SwipeCardView.ItemTemplate>
-                
+
             </swipeCardView:SwipeCardView>
+
+
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10,10,10,20" Spacing="30">
                 <StackLayout>
                     <Button x:Name="nopeButton" ImageSource="TDRS.png" Clicked="nopeButton_Clicked"
                             WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="White" Scale="0.8"></Button>
                  </StackLayout>
                 <StackLayout VerticalOptions="Center">
+
+                    
                     <Button x:Name="likeButton" ImageSource="TLRS.png" Clicked="likeButton_Clicked"
-                            WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="White" Scale="0.8"></Button>
+                            WidthRequest="60" HeightRequest="60" CornerRadius="30"  BackgroundColor="White" Scale="0.8"></Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
