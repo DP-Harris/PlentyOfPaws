@@ -35,10 +35,14 @@ namespace PlentyOfPaws.ViewModels
 
 
          public string Username { get; } = User.ActiveUsers[0].UserName;
+
          public string Email { get; } = User.ActiveUsers[0].UserEmail;    
          public string Location { get; } = User.ActiveUsers[0].UserLocation;
 
-         
+         public string DogName { get; } = Dog.UsersDog[0].DogName;
+
+         public ImageSource DogPhoto { get;  } = ImageSource.FromStream(() => new MemoryStream(ByteArrayConverion.converttoblob(Dog.UsersDog[0].DogImage)));  
+
 
 
         public ICommand OpenWebCommand { get; }

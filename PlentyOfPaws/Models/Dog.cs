@@ -10,6 +10,8 @@ namespace PlentyOfPaws.Models
 {
     public class Dog
     {
+        public static List<Dog> UsersDog = new List<Dog>();
+
         public int UserID { get; set; }
         public int DogID { get; set; }
         public string DogName { get; set; }
@@ -20,6 +22,11 @@ namespace PlentyOfPaws.Models
         public string Bio { get; set; }
         public Stream DogImage { get; set; }
         public ImageSource Photo { get; set; }
+
+        public void AddtoList(Dog dog)
+        {
+            UsersDog.Add(dog);
+        }
 
     }
 }

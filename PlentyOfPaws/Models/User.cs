@@ -7,6 +7,7 @@ namespace PlentyOfPaws.Models
 {
     public class User
     {
+
         public static List<User> ActiveUsers = new List<User>();
         public int UserID { get; set; }
         public string UserEmail { get; set; }

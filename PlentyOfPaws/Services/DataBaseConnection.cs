@@ -9,37 +9,47 @@ namespace PlentyOfPaws.Services
 {
     public class DataBaseConnection
     {
+        // Hold Query so we can just modify this query before using it.
         public static string query = "";
 
+        // Password as string so can be changed if needed
         private static string passwsd = "root";
 
+        // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
         private static string server = "172.23.112.1";
         // private static string server = "172.25.65.204";
 
         //Connection info
-        // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
+        // Connected to local host server on specified ip to the database we need using root as password. 
         private string MySQLConnectionString = $"server={server};database=db_account_info;user id=Dan;password={passwsd};";
 
+        // Register User takes in a username,emal,password,and location.
         public void RegisterUser(string username, string email, string passhash, string location)
         {
 
             //Connects to DB
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
 
-            // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
+            // Query we need to pass in updates private query in the class.
             query = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
 
+            // Opens database connection
             dbConnect.Open();
 
-            //Runs query
+            // Preps query to be sent to database query
             MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
 
+            // Runs the Query
             commanddb.ExecuteNonQuery();
 
+            // Closes the database connection. 
             dbConnect.Close();
 
         }
 
+        // Validate users login request, takes in email and password
+        // if incorrect no database rows will be shown and we can return false
+        // else will be true and user will be logged in. 
         public bool ValidateUser(string email, string password)
         {
             //Connects to DB
@@ -71,7 +81,10 @@ namespace PlentyOfPaws.Services
 
             // make sure reader is closed and db is closed 
             reader.Close();
+
+            // Cloes database connection. 
             dbConnect.Close();
+
             // No matches was found so we can return false to fail validation of the login attempt 
             return false;
         }
@@ -120,7 +133,6 @@ namespace PlentyOfPaws.Services
             //Connects to DB
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
 
-            // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
             query = $"INSERT INTO `tbl_dog` (`UserID`, `DogName`, `BreedOne`, `BreedTwo`, `Age`, `Gender`, `ImageOne`, `ImageTwo`, `ImageThree`, `ImageFour`, `ImageFive`, `Bio`) VALUES (@UserID, @DogName, @BreedOne, NULL, @Age, @Gender, @ImageOne, 'NULL', 'NULL', 'NULL', 'NULL', @Bio)\n";
 
             dbConnect.Open();
@@ -134,7 +146,6 @@ namespace PlentyOfPaws.Services
             commanddb.Parameters.Add("@gender", MySqlDbType.VarChar).Value = gender;
             commanddb.Parameters.Add("@bio", MySqlDbType.VarChar).Value = bio;
             commanddb.Parameters.Add("@ImageOne", MySqlDbType.LongBlob).Value = img;
-            // Command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Password;
 
             commanddb.ExecuteNonQuery();
 
@@ -149,7 +160,6 @@ namespace PlentyOfPaws.Services
             //Connects to DB
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
 
-            // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
             query = "SELECT * FROM `tbl_dog`";
 
             dbConnect.Open();
@@ -173,8 +183,10 @@ namespace PlentyOfPaws.Services
                     dog.Bio = reader["bio"].ToString();
                     dog.DogImage = reader.GetStream(7);
 
-                    //  dog.DogImage = reader.GetBytes
-                    // dog.DogImage = ImageSource.FromStream(() => new MemoryStream(IFilePicker.converttoblob(reader.GetStream(7))));
+                    if (dog.UserID == User.ActiveUsers[0].UserID)
+                    {
+                        dog.AddtoList(dog);
+                    }
 
                     dogs.Add(dog);
                 }
@@ -190,31 +202,7 @@ namespace PlentyOfPaws.Services
             }
         }
 
-        //public string GetGender()
-        //{
-        //    string gender;
-        //    //   Connects to DB
-        //    MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
-
-        //    // Query to find the dogs gender from the database tables. 
-        //    query = $"SELECT Gender FROM `tbl_dog` WHERE UserID = '{User.ActiveUsers[0].UserID}';";
-
-        //    dbConnect.Open();
-
-        //    MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
-
-        //    MySqlDataReader reader = commanddb.ExecuteReader();
-
-        //    gender = reader["Gender"].ToString();
-
-        //    reader.Close();
-
-        //    dbConnect.Close();
-
-   
-        //    return gender;
-        //}
-
+        
         // Checks to make sure user has a dog register on the database
         public bool UserHasDog()
         {
@@ -282,25 +270,3 @@ namespace PlentyOfPaws.Services
     }
 }
 
-        //public void GetChats()
-        //{
-        //    //Connects to DB
-        //    MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
-
-        //    // string AddUserQuery = $"INSERT INTO `tbl_user` (`UserID`, `UserName`, `Email`, `EncryptedPassword`, `Location`) VALUES(NULL, '{username}', '{email}', '{passhash}', '{location}')";
-        //    query = "SELECT * FROM `tbl_match`";
-
-        //    dbConnect.Open();
-
-        //    MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
-
-        //    MySqlDataReader reader = commanddb.ExecuteReader();
-
-        //    // get users id who is logged in 
-        //    // find all there matchs from the database 
-
-        //    // froms matches download there name and chats 
-
-
-        //}
-    

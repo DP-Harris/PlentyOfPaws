@@ -1,6 +1,7 @@
 ﻿using PlentyOfPaws.Models;
 using PlentyOfPaws.Services;
 using System;
+using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,6 +22,9 @@ namespace PlentyOfPaws.Views
         private int Age;
         private string Gender;
         private string Bio;
+
+        // Temp to store age before we parse to int. 
+        private string tempage;
        
         // Makes page usable within the application by instantiating it as a object.
         public RegisterDog()
@@ -32,8 +36,16 @@ namespace PlentyOfPaws.Views
         // the database and associates the dog with the logged in current user. 
         private async void RegButton_Clicked(object sender, EventArgs e)
         {
-            Database.RegisterDog(User.ActiveUsers[0].UserID ,Dogname, Breed, Age, Gender, Bio, IFilePicker.bytearray);
-            await Shell.Current.GoToAsync("..");      
+            // If gender is wrong hits a user prompt to re enter the gender. 
+            if (CheckGender() == false || ConvertAgeToInt() == false)
+            {
+                await Application.Current.MainPage.DisplayAlert("Incorrect Details", "You have entered incorrect Gender or wrong type for age, numbers only please", "Re Type");
+            }
+            else
+            {
+                Database.RegisterDog(User.ActiveUsers[0].UserID, Dogname, Breed, Age, Gender, Bio, IFilePicker.bytearray);
+                await Shell.Current.GoToAsync("..");
+            }
         }
 
         // Photo picker opens users files and enable user to select a photo from there phone.
@@ -59,15 +71,14 @@ namespace PlentyOfPaws.Views
         // Needs validation prior to assignments as errors occur when other then a int is entered. 
         private void DogsAge_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Age = int.Parse(e.NewTextValue);
+            tempage = e.NewTextValue;
         }
 
         // Sets Dogs bio to text entered in the dogsgender text entry field. 
         // Needs further validation adding so only male or female can be entered. 
         private void DogsGender_TextChanged(object sender, TextChangedEventArgs e)
         {
-             Gender = e.NewTextValue;
-                 
+             Gender = e.NewTextValue.ToLower();
         }
 
         // Text Changed event handler to
@@ -75,6 +86,37 @@ namespace PlentyOfPaws.Views
         private void DogBio_TextChanged(object sender, TextChangedEventArgs e)
         {
             Bio = e.NewTextValue;
+        }
+
+        // Checks if the gender entered is in the correct form. 
+        private bool CheckGender()
+        {
+            if (Gender.ToLower() == "Female".ToLower())
+            {
+                return true;
+            }
+            else if (Gender.ToLower() == "Male".ToLower())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        // Checks all chars are numbers within the given string. 
+        private bool ConvertAgeToInt()
+        {
+            if (tempage.All(char.IsDigit))
+            {
+                Age = int.Parse(tempage);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

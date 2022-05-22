@@ -5,8 +5,9 @@
              x:Class="PlentyOfPaws.Views.ChatPageView">
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+        <StackLayout BackgroundColor="Black">
+            <Label Text="Chat Coming Soon!"
+                   FontSize="Header"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                    />

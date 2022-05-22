@@ -21,42 +21,57 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="#222222">
 
-            <Frame Background="#222222">
+            <StackLayout>
                 <Label x:Name="Profile"
                 Text="Profile"
                 VerticalOptions="CenterAndExpand" 
                 TextColor="White"
                 FontSize="Header"
+                       Padding="5"
                        Scale="0.4"
                 HorizontalOptions="CenterAndExpand" />
-            </Frame>
-     
+            </StackLayout>
 
-            <StackLayout BackgroundColor="#222222" VerticalOptions="StartAndExpand" Spacing="15" AnchorX="4" AnchorY="10">
+            <StackLayout Spacing="10">
+
 
                 <Label x:Name="Name"
                 Text="{Binding Username}" 
                 TextColor="White"
                 FontSize="Title"
                  
-                 />
+                ></Label>
 
 
-            <Label x:Name="Email"
+                <Label x:Name="Email"
                 Text="{Binding Email}" 
                 TextColor="White"
                 FontSize="Medium"
-                />
+                       ></Label>
 
-            <Label x:Name="Location"
+
+                <Label x:Name="Location"
                 Text="{Binding Location}"            
                 TextColor="White"                 
                 FontSize="Medium"
-                />
+                > </Label>
 
+     
+                <Label  x:Name="Dogsname"
+                         Text="{Binding DogName}"
+                         FontSize="Medium"
+                         TextColor="White">
+                     
+                    
+                </Label>
+                 
+               
+                
+                <Image Source="{Binding DogPhoto}" HeightRequest="400" HorizontalOptions="FillAndExpand"/>
+                
+            </StackLayout>
             
 
-        </StackLayout>
             <Frame BackgroundColor="#222222">
 
                 <Button x:Name="RegisterDog" 
@@ -64,7 +79,8 @@
                     Clicked="AddDogPage"
                     Scale="2"
                     BackgroundColor="#222222" 
-                    TextColor="White" >
+                    TextColor="White"
+                     >
                 </Button>
 
             </Frame>

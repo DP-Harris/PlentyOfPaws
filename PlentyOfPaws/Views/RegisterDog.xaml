@@ -132,10 +132,11 @@
 
                 </Frame>
 
-                <Frame>
+                <Frame BackgroundColor="#222222"> 
                     <Button x:Name="PhotoPicker" Text="Choose a photo"
-                            BackgroundColor="Wheat"
-                            TextColor="white"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            CornerRadius="15"
                             Clicked="PhotoPicker_Clicked"
                             >
                         

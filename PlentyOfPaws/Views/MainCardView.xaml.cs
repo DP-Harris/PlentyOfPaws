@@ -22,7 +22,7 @@ namespace PlentyOfPaws.Views
         // Creates a list that is can be binded to XAML binding. 
         public ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
 
-        // List to hold dogs needed for infomation and filtering before been sent to display dog list.
+        // List to hold dogs needed for information and filtering before been sent to display dog list.
         public static List<Dog> dogs = new List<Dog>();
 
         // Initiates view for this page.
