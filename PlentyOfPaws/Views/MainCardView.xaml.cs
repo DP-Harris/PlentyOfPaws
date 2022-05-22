@@ -21,6 +21,12 @@ namespace PlentyOfPaws.Views
         // Creates a list that is can be binded to XAML binding. 
         public ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
 
+        public static List<int> LikedDogs = new List<int>();
+        public static List<int> NotLikedDogs = new List<int>();
+
+        private int _index = 0;
+
+
         // List to hold dogs needed for information and filtering before been sent to display dog list.
         public static List<Dog> dogs = new List<Dog>();
 
@@ -118,7 +124,10 @@ namespace PlentyOfPaws.Views
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
 
             // Send Reject query here. 
-            // Needs to be implemented to stop users matching with the same dog, causeing database key errors.
+            // Needs to be implemented to stop users matching with the same dog, causing database key errors.
+            // db.LogLeftSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, TopItem.DogID);
+
+          //  NotLikedDogs.Add(TopItem.DogID);
         }
 
         
@@ -129,7 +138,35 @@ namespace PlentyOfPaws.Views
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
 
             // Sends Current users ID, Current DogID and the dog the user swiped on into the Database.
-            db.LogRightSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, TopItem.DogID);
+          //   db.LogRightSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, TopItem.DogID);
+
+           // LikedDogs.Add(TopItem.DogID);
+
+            int OtherUsersID = db.FindMatch(Dog.UsersDog[0].DogID, TopItem.DogID);
+
+            db.CreateChatMatchRow(OtherUsersID);
         }
+
+        //private void LogAllLeftSwipes(List<int> NotLikedDogs)
+        //{
+        //    for (int i = 0; i < NotLikedDogs.Count(); i++)
+        //    {
+        //        db.LogLeftSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, NotLikedDogs[i]);
+        //    }
+        //}
+
+        //private void LogAllRightSwipes(List<int> LikedDogs)
+        //{
+        //    for (int i = 0; i < LikedDogs.Count(); i++)
+        //    {
+        //        db.LogLeftSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, LikedDogs[i]);
+        //    }
+        //}
+
+        //private void LogAllSwiped()
+        //{
+        //    LogAllLeftSwipes(NotLikedDogs);
+        //    LogAllRightSwipes(LikedDogs);
+        //}
     }
 }

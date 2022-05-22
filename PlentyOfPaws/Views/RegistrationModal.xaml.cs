@@ -37,9 +37,8 @@ namespace PlentyOfPaws.Views
         private async void Register_User_btn_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//login");
-            Console.WriteLine("Registration successful");
             Database.RegisterUser(UserName, UserEmail, UserPassword, UserLocation);
-
+            Console.WriteLine("Registration successful");
         }
 
         // e.NewTextValue is the users email we assign to UserEmail for registration. 

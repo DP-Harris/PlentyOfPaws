@@ -193,6 +193,8 @@ namespace PlentyOfPaws.Services
 
                 dbConnect.Close();
 
+                dogs = FilterMatchedDogs(dogs);
+
                 return dogs;
 
             }
@@ -224,6 +226,7 @@ namespace PlentyOfPaws.Services
             // If rows is > 0 a dog is present on the database and return true. 
             if (reader.HasRows)
             {
+                reader.Close();
                 return true;
 
             }
@@ -248,6 +251,7 @@ namespace PlentyOfPaws.Services
         // otherdogid represents the dog that was liked and current user swiped right on.
         public void LogRightSwipes(int Userid, int Dogid, int OtherDogID)
         {        
+                
                 //Connects to DB
                 MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
 
@@ -260,12 +264,148 @@ namespace PlentyOfPaws.Services
 
                 // Opens Database
                 dbConnect.Open();
-                
+
                 // Runs the query 
                 commanddb.ExecuteNonQuery();
                 
                 // Closes the connection to the database. 
                 dbConnect.Close();
+        }
+
+        // Logs data in tbl_Swiperight to use for matching data later in the application, userid is the dogs owner, dog id is the current dog
+        // otherdogid represents the dog that was liked and current user swiped right on.
+        public void LogLeftSwipes(int Userid, int Dogid, int OtherDogID)
+        {
+
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            // Query to log a row into the MySQL database
+            query = $"INSERT INTO `tbl_swipeleft` (`UserID`, `DogID`, `NotLikedDogID`) VALUES('{Userid}', '{Dogid}', '{OtherDogID}')";
+
+
+            // Sets up the Query
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            // Opens Database
+            dbConnect.Open();
+
+            // Runs the query 
+            commanddb.ExecuteNonQuery();
+
+            // Closes the connection to the database. 
+            dbConnect.Close();
+        }
+
+        
+
+        public int FindMatch(int UsersDogID, int LikedDogID)
+        {
+            int OtherUserID = 0;
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            // Query to log a row into the MySQL database
+            //SELECT UserID from tbl_SwipeRight where LikedDogID = 8 AND DogID = 9;
+
+            query = $"SELECT UserID from tbl_SwipeRight where LikedDogID = '{UsersDogID}' AND DogID = '{LikedDogID}'";
+
+            // Sets up the Query
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            // Opens Database
+            dbConnect.Open();
+
+            // Executes the Query.
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+      
+
+            if (reader.Read())
+            {
+ 
+                OtherUserID = int.Parse(reader["UserID"].ToString());
+
+            }
+            else
+            {
+                // Always close reader
+                reader.Close();
+            }
+
+
+            // Closes the connection to the database. 
+            dbConnect.Close();
+
+            return OtherUserID;
+        }
+
+        public void CreateChatMatchRow(int OtherUsersID)
+        {
+            if (OtherUsersID != 0)
+            {
+                MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+                // Query to log a row into the MySQL database 
+                query = $"INSERT INTO `tbl_chat` (`ChatID`, `UserA`, `UserB`, `ChatTimestamp`) VALUES(NULL,'{User.ActiveUsers[0].UserID}', '{OtherUsersID}', current_timestamp());";
+
+                MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+                // Opens Database
+                dbConnect.Open();
+
+                // Runs the query 
+                commanddb.ExecuteNonQuery();
+
+                // Closes the connection to the database. 
+                dbConnect.Close();
+            }
+        }
+
+        public List<Dog> FilterMatchedDogs(List<Dog> dogs)
+        {
+            // Opens SQL Connection. 
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            List<int> MatchedDogs = new List<int>();
+
+            // Query passed to the database should return rows if a dog is present. 
+            query = $"SELECT LikedDogID FROM `tbl_swiperight` WHERE UserID = '{User.ActiveUsers[0].UserID}' AND DogID = '{Dog.UsersDog[0].DogID}';";
+
+            // Opens Database connection
+            dbConnect.Open();
+
+            // Runs Query into the DB.
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            // Executes the Query.
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+            // If rows is > 0 a dog is present on the database and return true. 
+            
+             while (reader.Read())
+             {
+                MatchedDogs.Add(reader.GetInt32(0));
+             }
+            
+          
+
+            // make sure reader is closed and db is closed 
+            reader.Close();
+            // Closes the connection to the database. 
+            dbConnect.Close();
+
+            //*********************************************************************************************
+            for (int i = 0; i < dogs.Count; i++)
+            {
+                if (dogs[i].DogID == MatchedDogs[i]) 
+                {
+                    dogs.RemoveAt(i);
+                }
+            }
+            //*************************************************************************************************
+            return dogs;
+
         }
     }
 }
