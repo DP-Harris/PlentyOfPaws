@@ -41,7 +41,7 @@ namespace PlentyOfPaws.ViewModels
 
          public string DogName { get; } = Dog.UsersDog[0].DogName;
 
-         public ImageSource DogPhoto { get;  } = ImageSource.FromStream(() => new MemoryStream(ByteArrayConverion.converttoblob(Dog.UsersDog[0].DogImage)));  
+         public ImageSource DogPhoto { get;  } = ImageSource.FromStream(() => new MemoryStream(ByteArrayConversion.converttoblob(Dog.UsersDog[0].DogImage)));  
 
 
 

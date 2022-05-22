@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using Xamarin.Forms;
 
 namespace PlentyOfPaws.Services
 {
+    // Used to verify all enters are filled before enable-ling the click of a button in multiple places throughout the application 
     public class MultiTriggerConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,

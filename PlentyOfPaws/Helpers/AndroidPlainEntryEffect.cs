@@ -11,6 +11,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace PlentyOfPaws.Droid
 {
+    // Used to remove trailing black line from text entry fields throughout the application
     public class AndroidPlainEntryEffect : PlatformEffect
     {
         public AndroidPlainEntryEffect()

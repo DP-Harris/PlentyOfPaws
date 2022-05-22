@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -63,7 +62,7 @@ namespace PlentyOfPaws.Views
             {        
                 if (dog.Gender.ToLower() != userdogsGender)
                 {
-                    _dogs.Add(new Dog() { DogName = dog.DogName, Age = dog.Age, DogID = dog.DogID, BreedOne = dog.BreedOne, Photo = ImageSource.FromStream(() => new MemoryStream(converttoblob(dog.DogImage))) });
+                    _dogs.Add(new Dog() { DogName = dog.DogName, Age = dog.Age, DogID = dog.DogID, BreedOne = dog.BreedOne, Photo = ImageSource.FromStream(() => new MemoryStream(ByteArrayConversion.converttoblob(dog.DogImage))) });
                 } 
             }    
         }
@@ -98,33 +97,6 @@ namespace PlentyOfPaws.Views
             return null;
         }
 
-        // Converts a data stream into a byte[] to be sent to a image source so photos from blob storage can be displayed. 
-        private byte[] converttoblob(Stream stream)
-        {
-            var bytearray = new byte[stream.Length];
-            using (MemoryStream ms = new MemoryStream())
-            {
-                stream.CopyTo(ms);
-                bytearray = ms.ToArray();
-                ms.Dispose();
-            }
-
-            return bytearray;
-        }
-
-        // Iterates though the dog lists to find the dog ID belonging to the logged in user.
-        private int FindCurrentDogID(List<Dog> dogs)
-        {
-            for (int i = 0; i < dogs.Count(); i++)
-            {
-                if (dogs[i].UserID == User.ActiveUsers[0].UserID)
-                {
-                    return dogs[i].DogID;
-                }      
-            }
-
-            return 0;
-        }
 
         // Setting dog as topitem in order to access it from the dynamic data binding in the MainCard View.
         private Dog _topItem;
@@ -157,8 +129,7 @@ namespace PlentyOfPaws.Views
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
 
             // Sends Current users ID, Current DogID and the dog the user swiped on into the Database.
-            db.LogRightSwipes(User.ActiveUsers[0].UserID, FindCurrentDogID(dogs), TopItem.DogID);
-
+            db.LogRightSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, TopItem.DogID);
         }
     }
 }

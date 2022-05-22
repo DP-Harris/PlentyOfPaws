@@ -10,6 +10,7 @@ namespace PlentyOfPaws.Models
 {
     public class Dog
     {
+        // Used to gain access to the users dog. 
         public static List<Dog> UsersDog = new List<Dog>();
 
         public int UserID { get; set; }
@@ -23,6 +24,7 @@ namespace PlentyOfPaws.Models
         public Stream DogImage { get; set; }
         public ImageSource Photo { get; set; }
 
+        // Can populate the users dog into its respective list for use though tout the application. 
         public void AddtoList(Dog dog)
         {
             UsersDog.Add(dog);
