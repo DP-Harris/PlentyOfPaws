@@ -10,6 +10,7 @@
             
         <StackLayout>
 
+   
             <!-- swipeCardView sets the definition for displayed cards taking all dog related information from DogProfiles which is data-binded to collections in the back.cs page -->
             <swipeCardView:SwipeCardView x:Name="SwipeView1" ItemsSource="{Binding DogProfiles}" TopItem="{Binding TopItem}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                          Padding="10" SupportedSwipeDirections="Left,Right"
@@ -58,6 +59,7 @@
                     <Button x:Name="likeButton" ImageSource="TLRS.png" Clicked="likeButton_Clicked"
                             WidthRequest="60" HeightRequest="60" CornerRadius="30"  BackgroundColor="White" Scale="0.8"></Button>
                 </StackLayout>
+                
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

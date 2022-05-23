@@ -15,6 +15,12 @@ namespace PlentyOfPaws.Views
         public ChatPageView()
         {
             InitializeComponent();
+
+            // slect * from chat where user = current user 
+
+            // id, current, otheruser 
+
+            
         }
     }
 }

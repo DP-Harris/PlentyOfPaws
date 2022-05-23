@@ -16,8 +16,8 @@ namespace PlentyOfPaws.Services
         private static string passwsd = "root";
 
         // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
-        private static string server = "172.23.112.1";
-        // private static string server = "172.25.65.204";
+        //private static string server = "172.23.112.1";
+        private static string server = "172.25.65.204";
 
         //Connection info
         // Connected to local host server on specified ip to the database we need using root as password. 
@@ -153,9 +153,50 @@ namespace PlentyOfPaws.Services
 
         }
 
+        public void AssignUserDog()
+        {
+            //Connects to DB
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+            Dog UserDog = new Dog();
+            // Query to be ran 
+            query = $"SELECT* FROM tbl_dog WHERE UserID = '{User.ActiveUsers[0].UserID}'";
+
+            // Opens Database connection
+            dbConnect.Open();
+
+            // Runs Query into the DB.
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            // Executes the Query.
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+            // If rows is > 0 then email and password match and we can log the user in else we can fail validation.
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    UserDog.UserID = int.Parse(reader["UserID"].ToString());
+                    UserDog.DogID = int.Parse(reader["DogID"].ToString());
+                    UserDog.DogName = reader["DogName"].ToString();
+                    UserDog.BreedOne = reader["BreedOne"].ToString();
+                    UserDog.Age = int.Parse(reader["age"].ToString());
+                    UserDog.Gender = reader["gender"].ToString();
+                    UserDog.Bio = reader["bio"].ToString();
+                    UserDog.DogImage = reader.GetStream(7);
+                }
+
+            }
+                dbConnect.Close();
+
+                Dog.UsersDog.Add(UserDog);
+        }
+
         public List<Dog> GetAllDogs()
         {
+            AssignUserDog();
             List<Dog> dogs = new List<Dog>();
+            List<int> MatchedDogs = new List<int>();
+            MatchedDogs = FilterMatchedDogs();
 
             //Connects to DB
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
@@ -183,19 +224,22 @@ namespace PlentyOfPaws.Services
                     dog.Bio = reader["bio"].ToString();
                     dog.DogImage = reader.GetStream(7);
 
-                    if (dog.UserID == User.ActiveUsers[0].UserID)
+                    if (MatchedDogs.Contains(dog.DogID))
                     {
-                        dog.AddtoList(dog);
+                        Console.WriteLine("MAtched Removed as shown match blah blah");
+                    }
+                    else
+                    {
+                        dogs.Add(dog);
                     }
 
-                    dogs.Add(dog);
+                   
                 }
 
                 dbConnect.Close();
 
-                dogs = FilterMatchedDogs(dogs);
-
-                return dogs;
+               
+               return dogs;
 
             }
             else
@@ -362,7 +406,7 @@ namespace PlentyOfPaws.Services
             }
         }
 
-        public List<Dog> FilterMatchedDogs(List<Dog> dogs)
+        public List<int> FilterMatchedDogs()
         {
             // Opens SQL Connection. 
             MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
@@ -382,31 +426,19 @@ namespace PlentyOfPaws.Services
             MySqlDataReader reader = commanddb.ExecuteReader();
 
             // If rows is > 0 a dog is present on the database and return true. 
-            
-             while (reader.Read())
-             {
+
+            while (reader.Read())
+            {
                 MatchedDogs.Add(reader.GetInt32(0));
-             }
-            
-          
+            }
 
             // make sure reader is closed and db is closed 
             reader.Close();
             // Closes the connection to the database. 
             dbConnect.Close();
 
-            //*********************************************************************************************
-            for (int i = 0; i < dogs.Count; i++)
-            {
-                if (dogs[i].DogID == MatchedDogs[i]) 
-                {
-                    dogs.RemoveAt(i);
-                }
-            }
-            //*************************************************************************************************
-            return dogs;
 
-        }
+            return MatchedDogs;
+        }      
     }
 }
-

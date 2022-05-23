@@ -78,5 +78,5 @@ C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws\obj\Debug\netstandard2.1\Plenty
 C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws\obj\Debug\netstandard2.1\refint\PlentyOfPaws.dll
 C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws\obj\Debug\netstandard2.1\PlentyOfPaws.pdb
 C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws\obj\Debug\netstandard2.1\ref\PlentyOfPaws.dll
-C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws\obj\Debug\netstandard2.1\Views\AddDog.xaml.g.cs
 E:\TSE\PlentyOfPaws\PlentyOfPaws\obj\Debug\netstandard2.1\Views\RegisterDog.xaml.g.cs
+C:\Users\dphar\OneDrive\Desktop\POP\PlentyOfPaws\obj\Debug\netstandard2.1\Views\RegisterDog.xaml.g.cs

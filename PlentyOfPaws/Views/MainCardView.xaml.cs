@@ -15,16 +15,18 @@ namespace PlentyOfPaws.Views
     // MainCard View is the backend datasorting and methods needed to present data inside the MainCardView.
     public partial class MainCardView : ContentPage
     {
+        
+
         // Allows access to database methods. 
         DataBaseConnection db = new DataBaseConnection();
 
         // Creates a list that is can be binded to XAML binding. 
-        public ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
+        public static ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
 
         public static List<int> LikedDogs = new List<int>();
-        public static List<int> NotLikedDogs = new List<int>();
+        // public static List<int> NotLikedDogs = new List<int>();
 
-        private int _index = 0;
+        private int numberofdogs;
 
 
         // List to hold dogs needed for information and filtering before been sent to display dog list.
@@ -50,8 +52,6 @@ namespace PlentyOfPaws.Views
             }
         }
 
-       
-
         // Gets dogs creates a new list of dogs
         // Populates that dog list from the database of tbl_dog, finds the users dogs gender and removes all the same gender types from the collection.
         // after we have the opposite gender creates new Observable objects of the remaining dogs setting properties for data binding in the XAML page.
@@ -68,6 +68,7 @@ namespace PlentyOfPaws.Views
             {        
                 if (dog.Gender.ToLower() != userdogsGender)
                 {
+                    numberofdogs++;
                     _dogs.Add(new Dog() { DogName = dog.DogName, Age = dog.Age, DogID = dog.DogID, BreedOne = dog.BreedOne, Photo = ImageSource.FromStream(() => new MemoryStream(ByteArrayConversion.converttoblob(dog.DogImage))) });
                 } 
             }    
@@ -118,10 +119,13 @@ namespace PlentyOfPaws.Views
         }
 
         // On no click button will swipe card away and populate matching criteria. 
+
+        int totalcount = 0;
         private void nopeButton_Clicked(object sender, EventArgs e)
         {
             // Swipe view will direct visible card to the left indicating no match wanted 
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
+            totalcount++;
 
             // Send Reject query here. 
             // Needs to be implemented to stop users matching with the same dog, causing database key errors.
@@ -130,17 +134,22 @@ namespace PlentyOfPaws.Views
           //  NotLikedDogs.Add(TopItem.DogID);
         }
 
-        
+
         // On like button clicked will swipe away card in the correct direction and populate matching criteria
         private void likeButton_Clicked(object sender, EventArgs e)
         {
             // SwipeView is moved as card shifts to the right. 
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
+            totalcount++;
+            LikedDogs.Add(TopItem.DogID);
 
-            // Sends Current users ID, Current DogID and the dog the user swiped on into the Database.
-          //   db.LogRightSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, TopItem.DogID);
-
-           // LikedDogs.Add(TopItem.DogID);
+            if (totalcount == numberofdogs)
+            {
+                LogAllRightSwipes(LikedDogs);
+                likeButton.IsVisible = false;
+                nopeButton.IsVisible = false;
+                
+            }
 
             int OtherUsersID = db.FindMatch(Dog.UsersDog[0].DogID, TopItem.DogID);
 
@@ -155,13 +164,13 @@ namespace PlentyOfPaws.Views
         //    }
         //}
 
-        //private void LogAllRightSwipes(List<int> LikedDogs)
-        //{
-        //    for (int i = 0; i < LikedDogs.Count(); i++)
-        //    {
-        //        db.LogLeftSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, LikedDogs[i]);
-        //    }
-        //}
+        private void LogAllRightSwipes(List<int> LikedDogs)
+        {
+            for (int i = 0; i < LikedDogs.Count(); i++)
+            {
+                db.LogRightSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, LikedDogs[i]);
+            }
+        }
 
         //private void LogAllSwiped()
         //{
