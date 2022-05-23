@@ -5,48 +5,39 @@
              Shell.NavBarIsVisible="False"
              x:Class="PlentyOfPaws.Views.ChatPageView">
 
+    <!-- Page handles the displaying of matched elements, as its a collection view every time more entry are added the page will carry on populating new items-->
     <ContentPage.Content>
 
         <StackLayout BackgroundColor="#222222" >
-
-
             <CollectionView x:Name="MatchElementView" 
                             ItemsSource="{Binding UserProfiles}"
-                            ItemsLayout="VerticalList"
-                            
-                            HeightRequest="500" 
-                            
-                            >
-
-
+                            ItemsLayout="VerticalList" 
+                            HeightRequest="2000" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BackgroundColor="#222222" CornerRadius="1">
                             <Grid Padding="1" BackgroundColor="#222222">
-                            <StackLayout Spacing="10">
-
-
-
-                                <Label Grid.Row="1" x:Name="MatchText"
+                                <StackLayout Spacing="10">
+                                    <Label Grid.Row="1" x:Name="MatchText"
                                        Margin="20,0"
                                        Text="You Have Matched With"
                                        FontSize="Large"
                                        TextColor="White"
                                        />
-                                <Label Grid.Row="2" x:Name="OtherUserName"
+                                    <Label Grid.Row="2" x:Name="OtherUserName"
                                        Margin="20,0"
                                        Text="{Binding UserName}"
                                        FontSize="Large"
                                        TextColor="White"
                                        />
-                                <Label Grid.Row="3"
+                                    <Label Grid.Row="3"
                                        Margin="20,0"
                                        x:Name="EmailAt"
                                        Text="Email them at"
                                        FontSize="Large"
                                        TextColor="White"
                                        />
-                                <Label Grid.Row="4"
+                                    <Label Grid.Row="4"
                                        Margin="20,0"
                                        x:Name="Email"
                                        Text="{Binding UserEmail}"
@@ -54,16 +45,12 @@
                                        TextColor="White"
                                        />
 
-                            </StackLayout>
+                                </StackLayout>
                             </Grid>
                         </Frame>
                     </DataTemplate>
-
                 </CollectionView.ItemTemplate>
-
-
             </CollectionView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

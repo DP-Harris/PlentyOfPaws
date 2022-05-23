@@ -128,6 +128,8 @@ namespace PlentyOfPaws.Views
             // Swipe view will direct visible card to the left indicating no match wanted 
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
             totalcount++;
+
+            // Further implementations would see a LogallLeftSwipes method here to stop dogs user dislikes been re shown to them. 
         }
 
 

@@ -32,7 +32,6 @@
                                                 <Span Text="{Binding Age}"></Span>
                                                 <Span Text=", "></Span>
                                                 <Span Text="{Binding BreedOne}"></Span>
-                                                <!-- <Span Text="{Binding DogID}"></Span> -->
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>

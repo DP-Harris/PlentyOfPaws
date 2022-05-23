@@ -6,7 +6,7 @@ namespace PlentyOfPaws.Models
 {
     public class Chat
     {
-
+        // Holds user chats that match the logged in users ID, Used to determine matches. 
         public static List<Chat> UserChats = new List<Chat>();
 
         // Get the chat ID of the chat

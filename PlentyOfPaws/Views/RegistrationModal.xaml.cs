@@ -54,7 +54,7 @@ namespace PlentyOfPaws.Views
         }
 
         // e.NewTextValue is the users Password we assign to UserPassword for registration. 
-        // Futher implementation for password checking and hashing to be implemented. 
+        // Further implementation for password checking and hashing to be implemented. 
         private void userPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             UserPassword = e.NewTextValue;

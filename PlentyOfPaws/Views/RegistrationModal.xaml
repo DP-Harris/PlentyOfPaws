@@ -9,7 +9,7 @@
              Shell.PresentationMode="ModalAnimated"
              x:Class="PlentyOfPaws.Views.RegistrationModal">
 
-        <!-- Registration view page, hold needed elements and stying needing for displaying user registration boxs and enables users to sign up to accounts. -->
+        <!-- Registration view page, hold needed elements and stying needing for displaying user registration box and enables users to sign up to accounts. -->
 
     <ContentPage.Content>
 

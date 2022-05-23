@@ -4,7 +4,8 @@
              x:Class="PlentyOfPaws.Views.RegisterDog">
     <ContentPage.Content> 
         <StackLayout BackgroundColor="#222222">
-
+            
+            <!-- Holds the top level text element labels for displaying at the top of the page. -->
             <StackLayout Margin=" 0,40">
                 <Label
                             Text="Woof Woof"
@@ -19,7 +20,8 @@
                             HorizontalTextAlignment="Center">
                 </Label>
             </StackLayout>
-
+                
+            <!-- All entry's from this point are fields users can enter there information in -->
             <StackLayout Margin="25,1" VerticalOptions="StartAndExpand" Spacing="17">
 
                 <Frame
@@ -131,7 +133,8 @@
                     </Entry>
 
                 </Frame>
-
+                    
+                <!-- Photo picker button will call the click handler to allow access to users photos -->
                 <Frame BackgroundColor="#222222"> 
                     <Button x:Name="PhotoPicker" Text="Choose a photo"
                             BackgroundColor="White"
@@ -142,7 +145,8 @@
                         
                     </Button>
                 </Frame>
-              
+                
+                <!--    Registration button layout, with click handlers been data binded too only allow clicks when all other fields have been filled. -->
                 <StackLayout Margin="75,20" VerticalOptions="Center" Spacing="4">
                     <Button x:Name="RegButton" Text="Register Dog" 
                             HeightRequest="50"

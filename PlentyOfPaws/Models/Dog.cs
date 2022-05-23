@@ -13,6 +13,8 @@ namespace PlentyOfPaws.Models
         // Used to gain access to the users dog. 
         public static List<Dog> UsersDog = new List<Dog>();
 
+        // All needed properties for dogs in the application, as the app was scaled down in complexity, some of these
+        // are not currently needed but can easily be added upon and used in new version of the application. 
         public int UserID { get; set; }
         public int DogID { get; set; }
         public string DogName { get; set; }

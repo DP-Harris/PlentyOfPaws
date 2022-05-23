@@ -8,12 +8,11 @@
     x:Class="PlentyOfPaws.Views.LoginPage"
     xmlns:fontawesome="clr-namespace:FontAwesome"
     >
+    <!--Login Page view, hold all elements and data bindings for visually presenting the login page.-->
     <ContentPage.Content>
-        
-        
-        
         <Grid>
 
+            <!-- Box view holds the radiant effect you see on the login screen.-->
             <BoxView x:Name="BGGradiant" Scale="4" AnchorX="1" AnchorY="0">
                 <BoxView.Background>
                     <LinearGradientBrush>
@@ -24,7 +23,8 @@
                     </LinearGradientBrush>
                 </BoxView.Background>
             </BoxView>
-
+            
+            <!-- Creates are logos at the top banner by drawing from the FontAwesome file and binding these to text, making them scalable across all devices and screens as text would be-->
             <StackLayout Orientation="Horizontal" Spacing="5" VerticalOptions="StartAndExpand" Margin="20,90" Scale="0.7">
                 <Label HorizontalOptions="CenterAndExpand" 
                     Text="{StaticResource DogIcon}"
@@ -139,12 +139,6 @@
                             </Button.Triggers>
                         </Button>
                     </StackLayout>
-
-
-
-                
-                 
-
                 <StackLayout Spacing="1" VerticalOptions="StartAndExpand" Margin="20,210" Scale="0.8">
                     <Label HorizontalOptions="Center" 
                     Text="{StaticResource CopyrightIcon}"

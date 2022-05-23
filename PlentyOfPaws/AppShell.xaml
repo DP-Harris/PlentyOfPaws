@@ -28,10 +28,7 @@
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
     </ShellItem>
 
-                         
-    
-
-
+                        
     <!-- Sets route to main taking users to the home/card view page-->
     <TabBar Route="main">
         <!-- sets home tab name and lets the icon of a house -->

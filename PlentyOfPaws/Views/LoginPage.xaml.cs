@@ -10,7 +10,7 @@ namespace PlentyOfPaws.Views
     {   
         // Provides access to the database methods needed for user validation, information attachment and dog validation. 
 
-        DataBaseConnection db = new DataBaseConnection();
+        DataBaseConnection Database = new DataBaseConnection();
 
         // Used to store entered information to check if user is registered or unregistered 
         private string email;
@@ -24,14 +24,12 @@ namespace PlentyOfPaws.Views
         // Once user enters email state will be added to email var
         private void EmailEntered(object sender, TextChangedEventArgs e)
         {
-            // User email .
             email = e.NewTextValue;
         }
 
         // once user enters password its final state will be added to the password var 
         private void PasswordEntered(object sender, TextChangedEventArgs e)
         {
-            // User password .
             password = e.NewTextValue;
         }
 
@@ -39,15 +37,15 @@ namespace PlentyOfPaws.Views
         private async void Login(object sender, EventArgs e)
         {     
             // If email and password are valid will assign the users details from the database
-            if (db.ValidateUser(email, password) == true)
+            if (Database.ValidateUser(email, password) == true)
             {
-                db.GetUserDetails(email, password);
+                Database.GetUserDetails(email, password);
 
                 // When users details are assigned will check to see if they have a dog registered
                 // will direct to the main page and load dogs if so 
                 // else will prompt them to the register a dog page. 
 
-                if (db.UserHasDog() == true)
+                if (Database.UserHasDog() == true)
                 {
                     await Shell.Current.GoToAsync("//main");
                 }
