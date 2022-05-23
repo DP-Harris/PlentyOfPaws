@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj": {}
+    "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj": {
+    "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
+        "projectUniqueName": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
         "projectName": "PlentyOfPaws.iOS",
-        "projectPath": "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
-        "packagesPath": "C:\\Users\\dphar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws.iOS\\obj\\",
+        "projectPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\PlentyOfPaws.iOS.csproj",
+        "packagesPath": "C:\\Users\\cocknose\\.nuget\\packages\\",
+        "outputPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -19,7 +19,7 @@
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\dphar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cocknose\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -34,8 +34,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws\\PlentyOfPaws.csproj": {
-                "projectPath": "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws\\PlentyOfPaws.csproj"
+              "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj": {
+                "projectPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj"
               }
             }
           }
@@ -75,21 +75,21 @@
         }
       }
     },
-    "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws\\PlentyOfPaws.csproj": {
+    "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws\\PlentyOfPaws.csproj",
+        "projectUniqueName": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj",
         "projectName": "PlentyOfPaws",
-        "projectPath": "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws\\PlentyOfPaws.csproj",
-        "packagesPath": "C:\\Users\\dphar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dphar\\OneDrive\\Desktop\\POP\\PlentyOfPaws\\obj\\",
+        "projectPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\PlentyOfPaws.csproj",
+        "packagesPath": "C:\\Users\\cocknose\\.nuget\\packages\\",
+        "outputPath": "E:\\TSE\\PlentyOfPaws\\PlentyOfPaws\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\dphar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cocknose\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -161,7 +161,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

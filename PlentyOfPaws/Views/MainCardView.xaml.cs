@@ -23,9 +23,10 @@ namespace PlentyOfPaws.Views
         // Creates a list that is can be binded to XAML binding. 
         public static ObservableCollection<Dog> _dogs = new ObservableCollection<Dog>();
 
+        // Keeps track of dogs the current user wants to match with. 
         public static List<int> LikedDogs = new List<int>();
-        // public static List<int> NotLikedDogs = new List<int>();
 
+        // Finds out how many dogs we have to choose from. 
         private int numberofdogs;
 
 
@@ -118,52 +119,52 @@ namespace PlentyOfPaws.Views
             }
         }
 
-        // On no click button will swipe card away and populate matching criteria. 
-
+        // Used to know how many times users have pressed both buttons. 
         int totalcount = 0;
+
+        // Button handler for cards swiping not like and card moves to the left. 
         private void nopeButton_Clicked(object sender, EventArgs e)
         {
             // Swipe view will direct visible card to the left indicating no match wanted 
             SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Left);
             totalcount++;
-
-            // Send Reject query here. 
-            // Needs to be implemented to stop users matching with the same dog, causing database key errors.
-            // db.LogLeftSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, TopItem.DogID);
-
-          //  NotLikedDogs.Add(TopItem.DogID);
         }
 
 
         // On like button clicked will swipe away card in the correct direction and populate matching criteria
-        private void likeButton_Clicked(object sender, EventArgs e)
+        private async void likeButton_Clicked(object sender, EventArgs e)
         {
             // SwipeView is moved as card shifts to the right. 
-            SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
+            // Keeps track of button presses
+            // Adds liked dogs to a local list to log later. 
+            await SwipeView1.InvokeSwipe(MLToolkit.Forms.SwipeCardView.Core.SwipeCardDirection.Right);
             totalcount++;
-            LikedDogs.Add(TopItem.DogID);
 
+            if (numberofdogs < 1)
+            {
+                likeButton.IsVisible = false;
+                nopeButton.IsVisible = false;
+                await Application.Current.MainPage.DisplayAlert("Out Of Dogs", "Go to chat page", "Come Back Later");
+            }
+            else
+            {
+                LikedDogs.Add(TopItem.DogID);
+            }
+           
+
+            // If total count is == to number of dogs then user has swiped on all dogs.
+            // Logs that dogs have been matched and lets like and not like buttons in invisible.
             if (totalcount == numberofdogs)
             {
                 LogAllRightSwipes(LikedDogs);
+                FindAllMatches(LikedDogs);
                 likeButton.IsVisible = false;
                 nopeButton.IsVisible = false;
-                
             }
-
-            int OtherUsersID = db.FindMatch(Dog.UsersDog[0].DogID, TopItem.DogID);
-
-            db.CreateChatMatchRow(OtherUsersID);
         }
 
-        //private void LogAllLeftSwipes(List<int> NotLikedDogs)
-        //{
-        //    for (int i = 0; i < NotLikedDogs.Count(); i++)
-        //    {
-        //        db.LogLeftSwipes(User.ActiveUsers[0].UserID, Dog.UsersDog[0].DogID, NotLikedDogs[i]);
-        //    }
-        //}
 
+        // At the end of the users shown dogs will log all dogs swiped right on into the database for matching. 
         private void LogAllRightSwipes(List<int> LikedDogs)
         {
             for (int i = 0; i < LikedDogs.Count(); i++)
@@ -172,10 +173,15 @@ namespace PlentyOfPaws.Views
             }
         }
 
-        //private void LogAllSwiped()
-        //{
-        //    LogAllLeftSwipes(NotLikedDogs);
-        //    LogAllRightSwipes(LikedDogs);
-        //}
+        // Finds all match's between 2 dogs on the database and if they exists creates a chat row for them. 
+        private void FindAllMatches(List<int> LikedDogs)
+        {
+            for (int i = 0; i < LikedDogs.Count(); i++)
+            {
+                int OtherUsersID = db.FindMatch(Dog.UsersDog[0].DogID, LikedDogs[i]);
+                db.CreateChatMatchRow(OtherUsersID);
+            }
+        }
+
     }
 }

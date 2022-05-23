@@ -16,8 +16,8 @@ namespace PlentyOfPaws.Services
         private static string passwsd = "root";
 
         // Change server ip to your local NIC.... so CMD on windows run ipconig and copy and paste your NIC ipv4 address. 
-        //private static string server = "172.23.112.1";
-        private static string server = "172.25.65.204";
+        private static string server = "172.23.112.1";
+       // private static string server = "172.25.65.204";
 
         //Connection info
         // Connected to local host server on specified ip to the database we need using root as password. 
@@ -440,5 +440,85 @@ namespace PlentyOfPaws.Services
 
             return MatchedDogs;
         }      
+
+        public void GetChatMatchs()
+        {
+            // Opens SQL Connection. 
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            // Select all chats our user is the main participant in.
+            query = $"SELECT * FROM `tbl_chat` WHERE UserA = '{User.ActiveUsers[0].UserID}'";
+
+            // Opens Database connection
+            dbConnect.Open();
+
+            // Runs Query into the DB.
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            // Executes the Query.
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+            if (reader.Read())
+            {
+                while (reader.Read())
+                {
+                    Chat UserChat = new Chat();
+
+                    UserChat.ChatID = reader.GetInt32(0);
+                    UserChat.UserIDA = reader.GetInt32(1);
+                    UserChat.UserIDB = reader.GetInt32(2);
+
+                    UserChat.AddChatToList(UserChat);
+
+                }
+            }
+ 
+            // make sure reader is closed and db is closed 
+            reader.Close();
+            // Closes the connection to the database. 
+            dbConnect.Close();
+
+        }
+
+        public List<User> GetUserNameAndEmail(int UserBID)
+        {
+            // Opens SQL Connection. 
+            MySqlConnection dbConnect = new MySqlConnection(MySQLConnectionString);
+
+            List<User> MatchUsersDetails = new List<User>();
+
+            // Select all chats our user is the main participant in.
+            // SELECT UserName, Email FROM `tbl_user` WHERE UserID = 11;
+            query = $"SELECT UserName, Email FROM `tbl_user` WHERE UserID = '{UserBID}';";
+
+            // Opens Database connection
+            dbConnect.Open();
+
+            // Runs Query into the DB.
+            MySqlCommand commanddb = new MySqlCommand(query, dbConnect);
+
+            // Executes the Query.
+            MySqlDataReader reader = commanddb.ExecuteReader();
+
+            
+                while (reader.Read())
+                {
+                   User MatchedUser = new User();
+
+                    MatchedUser.UserName = reader.GetString(0);
+                    MatchedUser.UserEmail = reader.GetString(1);
+
+                    MatchUsersDetails.Add(MatchedUser);
+                }
+            
+
+            // make sure reader is closed and db is closed 
+            reader.Close();
+            // Closes the connection to the database. 
+            dbConnect.Close();
+
+            return MatchUsersDetails;
+
+        }
     }
 }

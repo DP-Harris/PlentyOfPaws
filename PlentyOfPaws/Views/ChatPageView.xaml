@@ -1,16 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
- <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:swipeCardView="clr-namespace:MLToolkit.Forms.SwipeCardView;assembly=MLToolkit.Forms.SwipeCardView" 
              Shell.NavBarIsVisible="False"
              x:Class="PlentyOfPaws.Views.ChatPageView">
-    
+
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Black">
-            <Label Text="Chat Coming Soon!"
-                   FontSize="Header"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                   />
+
+        <StackLayout BackgroundColor="#222222" >
+
+
+            <CollectionView x:Name="MatchElementView" 
+                            ItemsSource="{Binding UserProfiles}"
+                            ItemsLayout="VerticalList"
+                            
+                            HeightRequest="500" 
+                            
+                            >
+
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#222222" CornerRadius="1">
+                            <Grid Padding="1" BackgroundColor="#222222">
+                            <StackLayout Spacing="10">
+
+
+
+                                <Label Grid.Row="1" x:Name="MatchText"
+                                       Margin="20,0"
+                                       Text="You Have Matched With"
+                                       FontSize="Large"
+                                       TextColor="White"
+                                       />
+                                <Label Grid.Row="2" x:Name="OtherUserName"
+                                       Margin="20,0"
+                                       Text="{Binding UserName}"
+                                       FontSize="Large"
+                                       TextColor="White"
+                                       />
+                                <Label Grid.Row="3"
+                                       Margin="20,0"
+                                       x:Name="EmailAt"
+                                       Text="Email them at"
+                                       FontSize="Large"
+                                       TextColor="White"
+                                       />
+                                <Label Grid.Row="4"
+                                       Margin="20,0"
+                                       x:Name="Email"
+                                       Text="{Binding UserEmail}"
+                                       FontSize="Large"
+                                       TextColor="White"
+                                       />
+
+                            </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+
+            </CollectionView>
+
         </StackLayout>
     </ContentPage.Content>
-</ContentPage> 
+</ContentPage>

@@ -14,7 +14,8 @@ namespace PlentyOfPaws.Models
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public string UserLocation { get; set; }
- 
+        public string Name { get; internal set; }
+        public string Email { get; internal set; }
 
         public User()
         {

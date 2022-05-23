@@ -8,9 +8,6 @@
     x:Class="PlentyOfPaws.Views.LoginPage"
     xmlns:fontawesome="clr-namespace:FontAwesome"
     >
-
-    <!--<Image Source="bgforlogin.png" Aspect="AspectFill"></Image> -->
-
     <ContentPage.Content>
         
         
